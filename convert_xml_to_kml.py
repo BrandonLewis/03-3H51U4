@@ -2,6 +2,10 @@
 """
 Convert LandXML alignment files to KML for viewing in Google Earth.
 Transforms coordinates from EPSG:2871 (California State Plane Zone II) to WGS84.
+
+Note: LandXML stores coordinates as Northing Easting (Y X) pairs in the text content
+of Start, End, Center, and PI elements. This script swaps them to Easting Northing (X Y)
+before passing to pyproj for transformation.
 """
 
 import xml.etree.ElementTree as ET
@@ -48,12 +52,16 @@ def parse_landxml_alignment(xml_file):
             if start is not None:
                 coords = start.text.strip().split()
                 if len(coords) >= 2:
-                    coord_points.append((float(coords[0]), float(coords[1])))
+                    # XML format is: Northing Easting (Y X)
+                    # Store as: Easting Northing (X Y)
+                    coord_points.append((float(coords[1]), float(coords[0])))
 
             if end is not None:
                 coords = end.text.strip().split()
                 if len(coords) >= 2:
-                    coord_points.append((float(coords[0]), float(coords[1])))
+                    # XML format is: Northing Easting (Y X)
+                    # Store as: Easting Northing (X Y)
+                    coord_points.append((float(coords[1]), float(coords[0])))
 
         # Process Curve elements
         for curve in coord_geom.findall('landxml:Curve', ns):
@@ -63,12 +71,16 @@ def parse_landxml_alignment(xml_file):
             if start is not None:
                 coords = start.text.strip().split()
                 if len(coords) >= 2:
-                    coord_points.append((float(coords[0]), float(coords[1])))
+                    # XML format is: Northing Easting (Y X)
+                    # Store as: Easting Northing (X Y)
+                    coord_points.append((float(coords[1]), float(coords[0])))
 
             if end is not None:
                 coords = end.text.strip().split()
                 if len(coords) >= 2:
-                    coord_points.append((float(coords[0]), float(coords[1])))
+                    # XML format is: Northing Easting (Y X)
+                    # Store as: Easting Northing (X Y)
+                    coord_points.append((float(coords[1]), float(coords[0])))
 
     # Remove duplicate consecutive points
     unique_points = []
@@ -88,7 +100,7 @@ def transform_coordinates(points, source_epsg='EPSG:2871', target_epsg='EPSG:432
     Transform coordinates from source CRS to target CRS.
 
     Args:
-        points: List of (x, y) tuples in source CRS
+        points: List of (easting, northing) tuples in source CRS (X, Y order)
         source_epsg: Source coordinate system (default: EPSG:2871 - CA State Plane Zone II)
         target_epsg: Target coordinate system (default: EPSG:4326 - WGS84)
 
