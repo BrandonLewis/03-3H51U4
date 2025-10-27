@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Control Points</name>
+    <description>Survey control points from EPSG:2871 (CA State Plane Zone II)</description>
+
+    <Style id="controlPointStyle">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>0.9</scale>
+      </LabelStyle>
+    </Style>
+
+    <Placemark>
+      <name>CP-001</name>
+      <description>Station: CP-001
+Easting: 6827025.598
+Northing: 2183846.396
+Elevation: 2250.500 ft</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>-121.06418889495315,39.155077893125025,685.9524</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>CP-002</name>
+      <description>Station: CP-002
+Easting: 6827896.298
+Northing: 2184906.123
+Elevation: 2265.750 ft</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>-121.0610798601401,39.15796280068147,690.6006</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>CP-003</name>
+      <description>Station: CP-003
+Easting: 6829004.695
+Northing: 2187297.081
+Elevation: 2280.250 ft</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>-121.05708357900436,39.16449585136357,695.0202</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>CP-004</name>
+      <description>Station: CP-004
+Easting: 6829334.971
+Northing: 2188596.296
+Elevation: 2295.000 ft</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>-121.05587113857587,39.16805352697475,699.5160000000001</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>CP-005</name>
+      <description>Station: CP-005
+Easting: 6829769.325
+Northing: 2190037.946
+Elevation: 2310.500 ft</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>-121.05428624318574,39.171999279577754,704.2404</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
