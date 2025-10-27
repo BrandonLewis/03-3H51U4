@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>CR</name>
+    <description></description>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Alignment: CR</name>
+      <description></description>
+      <styleUrl>#lineStyle</styleUrl>
+      <LineString>
+        <extrude>0</extrude>
+        <tessellate>1</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -140.55255819251448,50.59094960846697,0
+          -140.55054586555136,50.59186623803747,0
+          -140.5493361584506,50.59232509110074,0
+          -140.54894773997293,50.59244564823097,0
+          -140.54719336630635,50.59286697634409,0
+          -140.54278742670027,50.59363665594037,0
+          -140.54068173082842,50.59368823123577,0
+          -140.53915663235523,50.5935006163063,0
+          -140.55298261973903,50.59076446591849,0
+          -140.55255819251448,50.59094960846697,0
+          -140.55054586555136,50.59186623803747,0
+          -140.5493361584506,50.59232509110074,0
+          -140.54894773997293,50.59244564823097,0
+          -140.54719336630635,50.59286697634409,0
+          -140.54278742670027,50.59363665594037,0
+          -140.54068173082842,50.59368823123577,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>LL</name>
+    <description></description>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Alignment: LL</name>
+      <description></description>
+      <styleUrl>#lineStyle</styleUrl>
+      <LineString>
+        <extrude>0</extrude>
+        <tessellate>1</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>
+          -140.55538057824316,50.58989919056928,0
+          -140.5553981417115,50.589935307564,0
+          -140.55535025122217,50.59000063112454,0
+          -140.55531689252842,50.590009541233364,0
+          -140.55503252239563,50.590085496069534,0
+          -140.55257045109846,50.59096051363471,0
+          -140.5524749743002,50.59100400538784,0
+          -140.5553981417115,50.589935307564,0
+          -140.55535025122217,50.59000063112454,0
+          -140.55503252239563,50.59008549606952,0
+          -140.55288900236877,50.59082006160051,0
+          -140.55257045109846,50.59096051363471,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>
