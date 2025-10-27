@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<LandXML xmlns="http://www.landxml.org/schema/LandXML-1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.landxml.org/schema/LandXML-1.2 http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd" date="2025-03-12" time="08:59:25" version="1.2" language="English" readOnly="false">
+	<Units>
+		<Imperial areaUnit="squareFoot" linearUnit="USSurveyFoot" volumeUnit="cubicYard" temperatureUnit="fahrenheit" pressureUnit="inchHG" diameterUnit="inch" angularUnit="decimal degrees" directionUnit="decimal degrees"></Imperial>
+	</Units>
+	<CoordinateSystem desc="HARN/CA California State Planes, Zone II, US Foot" epsgCode="2871" ogcWktCode="PROJCS[&quot;HARN/CA.CA-IIF&quot;,GEOGCS[&quot;HARN/CA.LL&quot;,DATUM[&quot;HARN/CA&quot;,SPHEROID[&quot;GRS1980&quot;,6378137.000,298.25722210],TOWGS84[0.0000,0.0000,0.0000,0.000000,0.000000,0.000000,0.00000000]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]],PROJECTION[&quot;Lambert_Conformal_Conic_2SP&quot;],PARAMETER[&quot;false_easting&quot;,6561666.667],PARAMETER[&quot;false_northing&quot;,1640416.667],PARAMETER[&quot;central_meridian&quot;,-122.00000000000000],PARAMETER[&quot;latitude_of_origin&quot;,37.66666666666666],PARAMETER[&quot;standard_parallel_1&quot;,39.83333333333333],PARAMETER[&quot;standard_parallel_2&quot;,38.33333333333333],UNIT[&quot;Foot_US&quot;,0.30480060960122]]" horizontalDatum="HARN/CA" horizontalCoordinateSystemName="HARN/CA.CA-IIF" fileLocation="AutoCAD Map Zone Name"></CoordinateSystem>
+	<Project name="C:\Users\s144991\DC\ACCDocs\Caltrans\03-4E170\Project Files\DESIGN\C3D\Alignments\03_4e170_Nev49_Aln.dwg"></Project>
+	<Application name="Autodesk Civil 3D" desc="Civil 3D" manufacturer="Autodesk, Inc." version="2024" manufacturerURL="www.autodesk.com/civil" timeStamp="2025-03-12T08:59:25"></Application>
+	<Alignments name="">
+		<Alignment name="CR" length="3550.000000002992" staStart="10649.999999996548" desc="">
+			<CoordGeom>
+				<Curve rot="cw" chord="122.124839223953" crvType="arc" delta="2.331796326891" dirEnd="66.110011697839" dirStart="68.44180802473" external="0.621422403521" length="122.13326771261" midOrd="0.62129375112" radius="3001.000000460664" tangent="61.075063915727">
+					<Start>2188472.443999872543 6829208.146648334339</Start>
+					<Center>2187369.738528824411 6831999.211256487295</Center>
+					<End>2188585.088990394492 6829255.322727715597</End>
+					<PI>2188529.246548792813 6829230.588436775841</PI>
+				</Curve>
+				<Line dir="66.110011697752" length="587.327356627043">
+					<Start>2188585.088990392629 6829255.322727714665</Start>
+					<End>2189122.096919827629 6829493.179633366875</End>
+				</Line>
+				<Curve rot="ccw" chord="334.238195706612" crvType="arc" delta="9.591203642424" dirEnd="75.701215340098" dirStart="66.110011697674" external="7.022523870101" length="334.628767492131" midOrd="6.997939977887" radius="1998.999999974725" tangent="167.706190326462">
+					<Start>2189122.096919827629 6829493.179633366875</Start>
+					<Center>2189931.65559103433 6827665.444489049725</Center>
+					<End>2189437.945653079543 6829602.517408963293</End>
+					<PI>2189275.434837778099 6829561.097592644393</PI>
+				</Curve>
+				<Line dir="75.701215340151" length="102.567375612942">
+					<Start>2189437.945653079543 6829602.517408963293</Start>
+					<End>2189537.335590932984 6829627.849341254681</End>
+				</Line>
+				<Curve rot="ccw" chord="445.052818209963" crvType="arc" delta="10.6445840497" dirEnd="86.345799389983" dirStart="75.701215340283" external="10.387630796557" length="445.693510976611" midOrd="10.342846440488" radius="2399.000000009085" tangent="223.48994481997">
+					<Start>2189537.335590932984 6829627.849341254681</Start>
+					<Center>2190129.836912172381 6827303.168033123948</Center>
+					<End>2189976.937597844284 6829697.290586319752</End>
+					<PI>2189753.902034149505 6829683.046543250792</PI>
+				</Curve>
+				<Line dir="86.345799370918" length="1084.410698550718">
+					<Start>2189976.937597844284 6829697.290586319752</Start>
+					<End>2191059.143562939018 6829766.405072823167</End>
+				</Line>
+				<Curve rot="ccw" chord="500.151021125593" crvType="arc" delta="26.281195270699" dirEnd="112.626994641846" dirStart="86.345799371147" external="29.577853543233" length="504.562727721025" midOrd="28.803361180911" radius="1100.000000009676" tangent="256.799780404715">
+					<Start>2191059.143562939018 6829766.405072823167</Start>
+					<Center>2191129.251627393998 6828668.641501137987</Center>
+					<End>2191552.454898240045 6829683.973462402821</End>
+					<PI>2191315.421239432413 6829782.772105147131</PI>
+				</Curve>
+				<Line dir="112.626994633894" length="368.676295309913">
+					<Start>2191552.454898240045 6829683.973462402821</Start>
+					<End>2191892.75383097399 6829542.132540579885</End>
+				</Line>
+			</CoordGeom>
+			<Profile name="CR">
+				<ProfAlign name="CR">
+					<PVI>10105.559999999999 2267.050541432564</PVI>
+					<ParaCurve length="500.">10538.370000000001 2296.914431432564</ParaCurve>
+					<ParaCurve length="650.">11580. 2269.311236432564</ParaCurve>
+					<ParaCurve length="120.">13154.839500663838 2367.423737323921</ParaCurve>
+					<ParaCurve length="650.">13660.545318852041 2415.694568860667</ParaCurve>
+					<ParaCurve length="55.">14112.299999999999 2378.611708432564</ParaCurve>
+					<PVI>14139.800999999999 2377.140404932564</PVI>
+				</ProfAlign>
+			</Profile>
+			<Superelevation staStart="10649.999999996548" staEnd="10772.133267709158"></Superelevation>
+			<Superelevation staStart="11359.460624336201" staEnd="11694.089391828333">
+				<BeginRunoffSta>11374.835624336201</BeginRunoffSta>
+				<FullSuperSta>11409.451008951586</FullSuperSta>
+				<FullSuperelev>-2.6</FullSuperelev>
+				<RunoffSta>11644.099007212948</RunoffSta>
+				<StartofRunoutSta>11678.714391828333</StartofRunoutSta>
+			</Superelevation>
+			<Superelevation staStart="11796.656767441274" staEnd="12242.350278417885">
+				<BeginRunoffSta>11833.016767441275</BeginRunoffSta>
+				<FullSuperSta>11846.653131077639</FullSuperSta>
+				<FullSuperelev>-2.2</FullSuperelev>
+				<RunoffSta>12192.353914781521</RunoffSta>
+				<StartofRunoutSta>12205.990278417885</StartofRunoutSta>
+			</Superelevation>
+			<Superelevation staStart="13326.760976968602" staEnd="13831.323704689628">
+				<BeginRunoffSta>13294.930976968602</BeginRunoffSta>
+				<FullSuperSta>13376.749158786784</FullSuperSta>
+				<FullSuperelev>-4.4</FullSuperelev>
+				<RunoffSta>13781.335522871446</RunoffSta>
+				<StartofRunoutSta>13863.153704689628</StartofRunoutSta>
+			</Superelevation>
+			<Feature name="SpeedStation" code="0" source="Autodesk Civil 3D">
+				<Property label="station" value="10027.11000000"></Property>
+				<Property label="speed" value="30.00000000"></Property>
+			</Feature>
+		</Alignment>
+	</Alignments>
+</LandXML>
