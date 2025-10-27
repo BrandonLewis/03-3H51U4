@@ -12,6 +12,49 @@ import xml.etree.ElementTree as ET
 from pyproj import Transformer
 import os
 import sys
+import math
+
+
+def interpolate_arc(center_x, center_y, start_x, start_y, end_x, end_y, radius, delta, rotation, num_points=50):
+    """
+    Interpolate points along a circular arc.
+
+    Args:
+        center_x, center_y: Center point of the arc (Easting, Northing)
+        start_x, start_y: Start point of the arc (Easting, Northing)
+        end_x, end_y: End point of the arc (Easting, Northing)
+        radius: Radius of the arc
+        delta: Sweep angle in degrees
+        rotation: 'ccw' for counter-clockwise, 'cw' for clockwise
+        num_points: Number of points to interpolate along the arc
+
+    Returns:
+        List of (x, y) tuples representing points along the arc
+    """
+    # Calculate start angle from center to start point
+    start_angle = math.atan2(start_y - center_y, start_x - center_x)
+
+    # Convert delta to radians
+    delta_rad = math.radians(delta)
+
+    # Adjust direction based on rotation
+    if rotation == 'cw':
+        delta_rad = -delta_rad
+
+    # Generate points along the arc
+    arc_points = []
+    for i in range(num_points + 1):
+        # Calculate angle for this point
+        fraction = i / num_points
+        angle = start_angle + (delta_rad * fraction)
+
+        # Calculate point on arc
+        x = center_x + radius * math.cos(angle)
+        y = center_y + radius * math.sin(angle)
+
+        arc_points.append((x, y))
+
+    return arc_points
 
 
 def parse_landxml_alignment(xml_file):
@@ -63,24 +106,59 @@ def parse_landxml_alignment(xml_file):
                     # Store as: Easting Northing (X Y)
                     coord_points.append((float(coords[1]), float(coords[0])))
 
-        # Process Curve elements
+        # Process Curve elements - interpolate points along the arc
         for curve in coord_geom.findall('landxml:Curve', ns):
-            start = curve.find('landxml:Start', ns)
-            end = curve.find('landxml:End', ns)
+            start_elem = curve.find('landxml:Start', ns)
+            end_elem = curve.find('landxml:End', ns)
+            center_elem = curve.find('landxml:Center', ns)
 
-            if start is not None:
-                coords = start.text.strip().split()
-                if len(coords) >= 2:
-                    # XML format is: Northing Easting (Y X)
-                    # Store as: Easting Northing (X Y)
-                    coord_points.append((float(coords[1]), float(coords[0])))
+            # Get curve attributes
+            radius = curve.get('radius')
+            delta = curve.get('delta')
+            rotation = curve.get('rot')
 
-            if end is not None:
-                coords = end.text.strip().split()
-                if len(coords) >= 2:
-                    # XML format is: Northing Easting (Y X)
-                    # Store as: Easting Northing (X Y)
-                    coord_points.append((float(coords[1]), float(coords[0])))
+            if start_elem is not None and end_elem is not None and center_elem is not None and radius and delta:
+                # Parse start point (Northing Easting -> Easting Northing)
+                start_coords = start_elem.text.strip().split()
+                start_x = float(start_coords[1])  # Easting
+                start_y = float(start_coords[0])  # Northing
+
+                # Parse end point (Northing Easting -> Easting Northing)
+                end_coords = end_elem.text.strip().split()
+                end_x = float(end_coords[1])  # Easting
+                end_y = float(end_coords[0])  # Northing
+
+                # Parse center point (Northing Easting -> Easting Northing)
+                center_coords = center_elem.text.strip().split()
+                center_x = float(center_coords[1])  # Easting
+                center_y = float(center_coords[0])  # Northing
+
+                # Convert radius and delta to float
+                radius_val = float(radius)
+                delta_val = float(delta)
+
+                # Interpolate points along the arc
+                arc_points = interpolate_arc(
+                    center_x, center_y,
+                    start_x, start_y,
+                    end_x, end_y,
+                    radius_val, delta_val, rotation,
+                    num_points=50
+                )
+
+                # Add all arc points
+                coord_points.extend(arc_points)
+            else:
+                # Fallback: if curve data is incomplete, just use start and end
+                if start_elem is not None:
+                    coords = start_elem.text.strip().split()
+                    if len(coords) >= 2:
+                        coord_points.append((float(coords[1]), float(coords[0])))
+
+                if end_elem is not None:
+                    coords = end_elem.text.strip().split()
+                    if len(coords) >= 2:
+                        coord_points.append((float(coords[1]), float(coords[0])))
 
     # Remove duplicate consecutive points
     unique_points = []
