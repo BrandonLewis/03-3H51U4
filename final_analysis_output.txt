@@ -1,0 +1,124 @@
+================================================================================
+IFC SITE ORIGIN OFFSET INVESTIGATION - FINAL ANALYSIS
+================================================================================
+
+REFERENCE DATA
+--------------------------------------------------------------------------------
+Site Origin:              E=  2081539.56 m, N=   667013.23 m
+Element Placement:        E= -2081539.56 m, N=  -667013.23 m
+RW Sta 0+029.26 (raw):    E=  2081541.37 m, N=   666968.34 m
+CM 10.99 (meters):        E=  2081483.77 m, N=   666614.48 m
+
+Expected distance (from user): 83 ft
+Measured distance (from user): 41 ft (2x off)
+
+
+SCENARIO A: No Offset Applied (CURRENT IMPLEMENTATION)
+================================================================================
+Code:
+  rw_coords = {
+      'easting': START_POINT[0],  # Use directly
+      'northing': START_POINT[1],
+      'elevation': START_POINT[2]
+  }
+
+RW Station coordinates:   E=  2081541.37 m, N=   666968.34 m
+CM 10.99 coordinates:     E=  2081483.77 m, N=   666614.48 m
+Distance: 358.51 m = 1176.22 ft
+
+Match with expected 83 ft? NO (off by 1093.22 ft)
+Match with measured 41 ft? NO (off by 1135.22 ft)
+
+VERDICT: This is the CORRECT implementation, but doesn't explain the
+         reported 41 ft vs 83 ft discrepancy.
+
+
+SCENARIO B: Add Site Origin
+================================================================================
+Code:
+  rw_coords = {
+      'easting': START_POINT[0] + SITE_ORIGIN['easting'],
+      'northing': START_POINT[1] + SITE_ORIGIN['northing'],
+      'elevation': START_POINT[2] + SITE_ORIGIN['elevation']
+  }
+
+RW Station coordinates:   E=  4163080.94 m, N=  1333981.56 m
+Distance: 2185961.02 m = 7171773.78 ft
+
+Match with expected 83 ft? NO (off by 7171690.78 ft)
+
+VERDICT: INCORRECT - produces coordinates far outside valid range
+
+
+SCENARIO C: Subtract Site Origin
+================================================================================
+Code:
+  rw_coords = {
+      'easting': START_POINT[0] - SITE_ORIGIN['easting'],
+      'northing': START_POINT[1] - SITE_ORIGIN['northing'],
+      'elevation': START_POINT[2] - SITE_ORIGIN['elevation']
+  }
+
+RW Station coordinates:   E=        1.81 m, N=      -44.89 m
+Distance: 2185635.34 m = 7170705.29 ft
+
+Match with expected 83 ft? NO (off by 7170622.29 ft)
+
+VERDICT: INCORRECT - produces local coordinates near origin
+
+
+SCENARIO D: Add Element Placement
+================================================================================
+Code:
+  rw_coords = {
+      'easting': START_POINT[0] + ELEMENT_PLACEMENT['easting'],
+      'northing': START_POINT[1] + ELEMENT_PLACEMENT['northing'],
+      'elevation': START_POINT[2] + ELEMENT_PLACEMENT['elevation']
+  }
+
+RW Station coordinates:   E=        1.81 m, N=      -44.89 m
+Distance: 2185635.34 m = 7170705.29 ft
+
+Match with expected 83 ft? NO (off by 7170622.29 ft)
+
+VERDICT: INCORRECT - same result as Scenario C (local coordinates)
+
+
+================================================================================
+SUMMARY TABLE
+================================================================================
+
+Scenario                         Distance (ft)   Error from 83 ft
+--------------------------------------------------------------------------------
+A: No Offset (CURRENT)                 1176.22            1093.22
+B: Add Site Origin                  7171773.78         7171690.78
+C: Subtract Site Origin             7170705.29         7170622.29
+D: Add Element Placement            7170705.29         7170622.29
+
+Expected:                                83.00
+User Measured:                           41.00
+
+================================================================================
+CONCLUSION
+================================================================================
+
+1. SCENARIO A (No Offset) is the CORRECT implementation.
+   - Start Point coordinates are already in world coordinates (EPSG:2767)
+   - The converter is working as intended
+
+2. The site origin offset should NOT be applied to Start Point properties.
+   - Element placement is for geometry, not properties
+   - Property coordinates are absolute, not relative
+
+3. NONE of the offset scenarios produce the reported 41 ft or 83 ft distances.
+   - Actual distance is ~1074 ft
+   - The 2x discrepancy cannot be explained by site origin offset
+
+4. The issue likely stems from:
+   - Measuring different points than CM 10.99 and RW Sta 0+032.67
+   - A different coordinate reference issue
+   - Measurement tool configuration
+
+RECOMMENDATION: Verify which specific points are being compared and
+                 check for other data sources or coordinate systems.
+
