@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
 Convert IFC (Industry Foundation Classes) files to KML for viewing in Google Earth.
-Transforms coordinates from EPSG:2871 (California State Plane Zone II) to WGS84.
+Transforms coordinates from EPSG:2767 (California State Plane Zone II in meters) to WGS84.
 
 This script extracts geometric elements from IFC files and converts them to KML format.
 Uses clampToGround altitude mode for simplicity.
+
+Note: IFC base units are meters, so we use EPSG:2767 (CA Zone 2 in meters) directly.
 """
 
 import ifcopenshell
@@ -23,26 +25,18 @@ def setup_ifc_settings():
     return settings
 
 
-def transform_point(x, y, z, source_epsg='EPSG:2871', target_epsg='EPSG:4326', from_meters=False):
+def transform_point(x, y, z, source_epsg='EPSG:2767', target_epsg='EPSG:4326'):
     """
     Transform a single point from source CRS to target CRS.
 
     Args:
         x, y, z: Coordinates in source CRS (Easting, Northing, Elevation)
-        source_epsg: Source coordinate system (default: EPSG:2871 - CA State Plane Zone II)
+        source_epsg: Source coordinate system (default: EPSG:2767 - CA State Plane Zone II in meters)
         target_epsg: Target coordinate system (default: EPSG:4326 - WGS84)
-        from_meters: If True, convert from meters to US Survey Feet before transformation
 
     Returns:
         Tuple of (longitude, latitude, elevation)
     """
-    # If coordinates are in meters, convert to US Survey Feet (EPSG:2871 uses feet)
-    if from_meters:
-        us_ft_per_meter = 1.0 / 0.3048006096012192
-        x = x * us_ft_per_meter
-        y = y * us_ft_per_meter
-        z = z * us_ft_per_meter
-
     transformer = Transformer.from_crs(source_epsg, target_epsg, always_xy=True)
     lon, lat = transformer.transform(x, y)
     return lon, lat, z
@@ -125,8 +119,7 @@ def extract_geometry_from_ifc(ifc_file):
                                             points.append({
                                                 'name': name,
                                                 'type': obj.is_a() if hasattr(obj, 'is_a') else 'Unknown',
-                                                'coords': (coords[0], coords[1], coords[2]),
-                                                'from_meters': True,  # IFC base units are meters
+                                                'coords': (coords[0], coords[1], coords[2]),  # Already in meters
                                                 'station': station,
                                                 'properties': props
                                             })
@@ -259,7 +252,7 @@ def create_kml_from_geometry(geometry_data, output_file):
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>{file_basename}</name>
-    <description>Retaining Wall (RW) points from IFC file. Coordinates in EPSG:2871 (CA State Plane Zone II) converted to WGS84.</description>
+    <description>Retaining Wall (RW) points from IFC file. Coordinates in EPSG:2767 (CA State Plane Zone II, meters) converted to WGS84.</description>
 
     <Style id="lineStyle">
       <LineStyle>
@@ -304,11 +297,10 @@ def create_kml_from_geometry(geometry_data, output_file):
         for idx, line in enumerate(lines):
             name = line['name'] or f"Line {idx+1}"
             line_type = line['type']
-            from_meters = line.get('from_meters', True)  # IFC uses meters by default
             coords = []
 
             for point in line['points']:
-                lon, lat, elev = transform_point(point[0], point[1], point[2], from_meters=from_meters)
+                lon, lat, elev = transform_point(point[0], point[1], point[2])
                 coords.append(f'{lon},{lat},0')
 
             kml_content += f'''
@@ -340,8 +332,7 @@ def create_kml_from_geometry(geometry_data, output_file):
         for idx, point in enumerate(points):
             name = point['name'] or f"Point {idx+1}"
             point_type = point['type']
-            from_meters = point.get('from_meters', True)  # IFC uses meters by default
-            lon, lat, elev = transform_point(point['coords'][0], point['coords'][1], point['coords'][2], from_meters=from_meters)
+            lon, lat, elev = transform_point(point['coords'][0], point['coords'][1], point['coords'][2])
 
             # Build description with properties
             station = point.get('station', 'N/A')
@@ -350,9 +341,9 @@ def create_kml_from_geometry(geometry_data, output_file):
             description_lines = [
                 f"Station: {station}",
                 f"Type: {point_type}",
-                f"Coordinates (State Plane):",
-                f"  Easting: {point['coords'][0] * (1/0.3048006096012192):.2f} ft",
-                f"  Northing: {point['coords'][1] * (1/0.3048006096012192):.2f} ft"
+                f"Coordinates (State Plane EPSG:2767):",
+                f"  Easting: {point['coords'][0]:.2f} m",
+                f"  Northing: {point['coords'][1]:.2f} m"
             ]
 
             # Add additional properties if available
@@ -390,11 +381,10 @@ def create_kml_from_geometry(geometry_data, output_file):
         for idx, polygon in enumerate(polygons):
             name = polygon['name'] or f"Polygon {idx+1}"
             polygon_type = polygon['type']
-            from_meters = polygon.get('from_meters', True)  # IFC uses meters by default
             coords = []
 
             for point in polygon['points']:
-                lon, lat, elev = transform_point(point[0], point[1], point[2], from_meters=from_meters)
+                lon, lat, elev = transform_point(point[0], point[1], point[2])
                 coords.append(f'{lon},{lat},0')
 
             # Close the polygon
