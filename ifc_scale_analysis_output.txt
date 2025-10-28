@@ -1,0 +1,248 @@
+================================================================================
+IFC COORDINATE SCALE INVESTIGATION
+================================================================================
+
+PART 1: DETAILED UNIT ANALYSIS
+--------------------------------------------------------------------------------
+Unit Assignment: #18=IfcUnitAssignment((#17,#19,#20,#24))
+
+  Unit: IfcSIUnit
+    Unit Type: LENGTHUNIT
+    Name: METRE
+    Prefix: None
+
+  Unit: IfcSIUnit
+    Unit Type: AREAUNIT
+    Name: SQUARE_METRE
+    Prefix: None
+
+  Unit: IfcSIUnit
+    Unit Type: VOLUMEUNIT
+    Name: CUBIC_METRE
+    Prefix: None
+
+  Unit: IfcConversionBasedUnit
+    Unit Type: PLANEANGLEUNIT
+    Name: degree
+    Conversion Factor: #23=IfcMeasureWithUnit(IfcRatioMeasure(0.0174533),#21)
+    Value: 0.0174533
+    Base Unit: #21=IfcSIUnit(*,.PLANEANGLEUNIT.,$,.RADIAN.)
+
+--------------------------------------------------------------------------------
+GEOMETRIC REPRESENTATION CONTEXTS:
+
+  Context: Model
+    Precision: 1e-07
+    World Coordinate System: #11=IfcAxis2Placement3D(#7,#9,#10)
+
+  Context: Annotation
+    Precision: 1e-07
+    World Coordinate System: #11=IfcAxis2Placement3D(#7,#9,#10)
+
+  Context: Model
+    Precision: 1e-07
+    World Coordinate System: #11=IfcAxis2Placement3D(#7,#9,#10)
+
+================================================================================
+PART 2: SITE ORIGIN AND IFC COORDINATES
+--------------------------------------------------------------------------------
+Site Origin (from IFC): (2081474.46679, 666740.95433, 687.3115101)
+  E: 2081474.47 m
+  N: 666740.95 m
+  Z: 687.31 m
+
+--------------------------------------------------------------------------------
+START POINTS FROM IFC PROPERTY SETS:
+--------------------------------------------------------------------------------
+  Station: 0+000.97
+
+Line:
+  Start Point: 2081463.7723497599,666582.58416006935,0
+  Parsed: E=2081463.77, N=666582.58, Z=0.00
+  Station: 0+003.41
+
+Line:
+  Start Point: 2081464.3758716662,666584.97084458964,0
+  Parsed: E=2081464.38, N=666584.97, Z=0.00
+  Station: 0+005.85
+
+Line:
+  Start Point: 2081464.975727651,666587.35845311801,0
+  Parsed: E=2081464.98, N=666587.36, Z=0.00
+  Station: 0+008.29
+
+Line:
+  Start Point: 2081465.5719162992,666589.74698002439,0
+  Parsed: E=2081465.57, N=666589.75, Z=0.00
+
+================================================================================
+PART 3: SCALE FACTOR TESTING
+================================================================================
+
+TEST CASE: CM 10.99 to RW Sta 0+035.11
+--------------------------------------------------------------------------------
+RW Sta 0+035.11 coords: E=2081471.89, N=666616.08
+Site Origin (user):     E=2081539.56, N=667013.23
+Expected distance:      83.00 ft
+Measured distance:      39.34 ft
+Ratio:                  2.11x
+
+Offset from Site Origin:
+  ΔE: -67.67 m
+  ΔN: -397.15 m
+
+Current calculation:
+  Distance: 402.87 m = 1321.76 ft
+
+--------------------------------------------------------------------------------
+HYPOTHESIS TEST: Double the offset from site origin
+--------------------------------------------------------------------------------
+Doubled offset:
+  ΔE: -135.34 m
+  ΔN: -794.30 m
+  Distance: 805.75 m = 2643.53 ft
+  Error from expected: 2560.53 ft
+
+2.11x scaled offset:
+  ΔE: -142.77 m
+  ΔN: -837.91 m
+  Distance: 849.99 m = 2788.67 ft
+  Error from expected: 2705.67 ft
+
+================================================================================
+PART 4: UNIT CONVERSION ANALYSIS
+================================================================================
+
+Unit conversions:
+  US Survey inch to meters: 0.025400050800102
+  US Survey foot to meters: 0.304800609601219
+  International foot to meters: 0.304800000000000
+  Ratio (US Survey / International): 1.0000020000
+
+Double conversion test:
+  If coordinates are in US Survey feet but treated as meters:
+    100 US Survey feet = 30.48 m
+    If wrongly treated as meters: 100.00 m
+    Error factor: 3.2808x
+
+================================================================================
+PART 5: COORDINATE UNIT HYPOTHESIS
+================================================================================
+
+Hypothesis: What if IFC coordinates are in US Survey FEET, not meters?
+--------------------------------------------------------------------------------
+If coordinates are in US Survey feet:
+  RW Sta E-coord: 2081471.89 ft = 634433.90 m
+  Site Origin E: 2081539.56 ft = 634454.53 m
+
+Coordinate magnitude check:
+  E-coordinate: 2081472
+  If this is meters: reasonable for state plane
+  If this is feet: reasonable for state plane
+  => Coordinate magnitude alone doesn't tell us the unit
+
+================================================================================
+PART 6: IFCOPENSHELL UNIT SCALE
+================================================================================
+Project length unit from ifcopenshell: #17=IfcSIUnit(*,.LENGTHUNIT.,$,.METRE.)
+Unit scale factor: 1
+  This means: 1 model unit = 1 meters
+
+================================================================================
+PART 7: SCENARIO COMPARISON
+================================================================================
+
+Test: CM 10.99 to RW Sta 0+035.11
+Expected: 83.00 ft
+--------------------------------------------------------------------------------
+
+Current approach (no scaling):
+  Scale factor: 1.00x
+  Distance: 1321.76 ft
+  Error: 1238.76 ft (1492.5%)
+
+Double offset:
+  Scale factor: 2.00x
+  Distance: 2643.53 ft
+  Error: 2560.53 ft (3085.0%)
+
+Ratio scaling (2.11x):
+  Scale factor: 2.11x
+  Distance: 2788.67 ft
+  Error: 2705.67 ft (3259.8%)
+
+Half the coordinates:
+  Scale factor: 0.50x
+  Distance: 660.88 ft
+  Error: 577.88 ft (696.2%)
+
+================================================================================
+PART 8: CONTROL POINTS ANALYSIS
+================================================================================
+
+Reading Control Points CSV...
+Found 35 control points
+
+First few points:
+  DELPHINE: E=6822225.15, N=2227366.90
+  DEW DROP: E=6822976.19, N=2171649.06
+  DOG BAR: E=6832110.61, N=2190701.31
+  HOGE: E=6844936.69, N=2229242.62
+  PONDEROSA: E=6814580.25, N=2202240.29
+
+Coordinate range in Control Points CSV:
+  Easting: 6814580 to 6859733
+  Northing: 2170687 to 2229243
+
+Coordinate range in IFC (Site Origin from user):
+  Easting: ~2081540
+  Northing: ~667013
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+OBSERVATION: IFC coordinates and Control Points use DIFFERENT coordinate systems!
+  IFC:           E ~2081540, N ~667013
+  Control Points: E ~2227367, N ~6822225
+  These appear to be different projections or the axes are swapped!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+================================================================================
+PART 9: ALIGNMENT XML COORDINATE SYSTEM
+================================================================================
+
+Alignment XML Coordinate System:
+  Description: HARN/CA California State Planes, Zone II, US Foot
+  EPSG Code: 2871
+
+Alignment XML Units:
+  Linear Unit: USSurveyFoot
+  Angular Unit: decimal degrees
+
+First alignment point (from XML):
+  Northing: 2183846.396933330689
+  Easting: 6827025.59842736274
+  (Note: In state plane coords these are typically N, E)
+
+--------------------------------------------------------------------------------
+CRITICAL FINDING:
+--------------------------------------------------------------------------------
+XML uses EPSG:2871 (State Plane CA Zone II, US Survey Feet)
+  Coordinates: N ~2,183,000 ft, E ~6,827,000 ft
+
+IFC coordinates appear to be:
+  Coordinates: E ~2,081,000, N ~666,000
+
+These are COMPLETELY DIFFERENT coordinate systems!
+The IFC likely uses EPSG:2767 (State Plane CA Zone II, METERS)
+
+Coordinate system difference ratio:
+  XML N / IFC E = 1.0492x
+  XML E / IFC N = 10.2394x
+
+================================================================================
+SUMMARY OF FINDINGS
+================================================================================
+Traceback (most recent call last):
+  File "/home/user/03-3H51U4/ifc_scale_investigation.py", line 437, in <module>
+    """.format(doubled_distance_ft=doubled_distance_ft, EXPECTED_DISTANCE_FT=EXPECTED_DISTANCE_FT))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: "'MUCH CLOSER' if abs(doubled_distance_ft - EXPECTED_DISTANCE_FT) < 10 else 'NOT CLOSE'"
