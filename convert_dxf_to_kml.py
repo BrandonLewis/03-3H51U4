@@ -8,6 +8,7 @@ import ezdxf
 from pyproj import Transformer
 import sys
 import os
+import math
 
 def get_transformer(source_epsg='EPSG:2871', target_epsg='EPSG:4326'):
     """
@@ -37,6 +38,45 @@ def transform_point(x, y, z, transformer):
     """
     lon, lat = transformer.transform(x, y)
     return lon, lat, z
+
+def calculate_cumulative_distances(points):
+    """
+    Calculate cumulative distance along a series of points.
+
+    Args:
+        points: List of tuples (x, y, z, layer)
+
+    Returns:
+        list: Cumulative distances in feet
+    """
+    if not points:
+        return []
+
+    distances = [0.0]  # First point is at distance 0
+
+    for i in range(1, len(points)):
+        x1, y1, z1, _ = points[i-1]
+        x2, y2, z2, _ = points[i]
+
+        # Calculate 2D distance (x, y only)
+        dist = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        distances.append(distances[-1] + dist)
+
+    return distances
+
+def format_station(station_feet):
+    """
+    Format station value in standard civil engineering format.
+
+    Args:
+        station_feet: Station in feet (e.g., 10048.77)
+
+    Returns:
+        str: Formatted station (e.g., "100+48.77")
+    """
+    hundreds = int(station_feet // 100)
+    feet = station_feet % 100
+    return f"{hundreds}+{feet:05.2f}"
 
 def extract_points_from_dxf(dxf_file):
     """
@@ -102,7 +142,7 @@ def extract_polylines_from_dxf(dxf_file):
     print(f"Found {len(polylines)} polyline entities")
     return polylines
 
-def create_kml(points, polylines, output_file, file_description):
+def create_kml(points, polylines, output_file, file_description, start_station=None, end_station=None):
     """
     Create KML file from points and polylines.
 
@@ -111,10 +151,20 @@ def create_kml(points, polylines, output_file, file_description):
         polylines: List of polylines
         output_file: Output KML file path
         file_description: Description for the KML file
+        start_station: Starting station in feet (e.g., 10000 for 100+00.00)
+        end_station: Ending station in feet (e.g., 11048.77 for 110+48.77)
     """
     # Create transformer once and reuse
     print(f"  Creating coordinate transformer...")
     transformer = get_transformer()
+
+    # Calculate cumulative distances for station interpolation
+    if points and start_station is not None and end_station is not None:
+        print(f"  Calculating cumulative distances...")
+        cumulative_distances = calculate_cumulative_distances(points)
+        total_distance = cumulative_distances[-1]
+        print(f"  Total distance: {total_distance:.2f} feet")
+        print(f"  Station range: {format_station(start_station)} to {format_station(end_station)}")
 
     # Use list for efficient string building
     kml_parts = []
@@ -162,9 +212,16 @@ def create_kml(points, polylines, output_file, file_description):
 
             lon, lat, elev = transform_point(x, y, z, transformer)
 
-            # Calculate station based on point index (approximate)
-            station_ft = i * 3.5  # Approximate station spacing
-            station_str = f"{int(station_ft)//100}+{int(station_ft)%100:03d}.{int((station_ft%1)*100):02d}"
+            # Calculate station value
+            if start_station is not None and end_station is not None and cumulative_distances:
+                # Interpolate station based on distance along alignment
+                progress = cumulative_distances[i] / total_distance
+                station_ft = start_station + (end_station - start_station) * progress
+                station_str = format_station(station_ft)
+            else:
+                # Fallback to approximate station based on index
+                station_ft = i * 8.0  # Approximate 8-foot spacing
+                station_str = format_station(station_ft)
 
             kml_parts.append(f'''
         <Placemark>
@@ -239,13 +296,15 @@ def create_kml(points, polylines, output_file, file_description):
     print(f"  - {len(points)} points")
     print(f"  - {len(polylines)} polylines")
 
-def convert_dxf_to_kml(dxf_file, output_file=None):
+def convert_dxf_to_kml(dxf_file, output_file=None, start_station=None, end_station=None):
     """
     Convert DXF file to KML format.
 
     Args:
         dxf_file: Path to input DXF file
         output_file: Path to output KML file (optional)
+        start_station: Starting station in feet (e.g., 10000 for 100+00.00)
+        end_station: Ending station in feet (e.g., 11048.77 for 110+48.77)
     """
     if output_file is None:
         base_name = os.path.splitext(dxf_file)[0]
@@ -258,9 +317,11 @@ def convert_dxf_to_kml(dxf_file, output_file=None):
     # Create description
     file_name = os.path.basename(dxf_file)
     description = f"Converted from {file_name} - EPSG:2871 (NAD83(HARN) CA Zone 2, US Survey Feet) to WGS84"
+    if start_station is not None and end_station is not None:
+        description += f"\nStation range: {format_station(start_station)} to {format_station(end_station)}"
 
     # Create KML
-    create_kml(points, polylines, output_file, description)
+    create_kml(points, polylines, output_file, description, start_station, end_station)
 
     return output_file
 
