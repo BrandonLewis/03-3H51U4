@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>MyProject</name>
-    <description>IFC model converted to KML from EPSG:2871 (CA State Plane Zone II)</description>
+    <name>4.023_PR_RW Points_S-BD_RW2</name>
+    <description>Retaining Wall (RW) points from IFC file. Coordinates in EPSG:2871 (CA State Plane Zone II) converted to WGS84.</description>
 
     <Style id="lineStyle">
       <LineStyle>
@@ -11,14 +11,18 @@
       </LineStyle>
     </Style>
 
-    <Style id="pointStyle">
+    <Style id="rwPointStyle">
       <IconStyle>
-        <color>ff00ff00</color>
-        <scale>0.8</scale>
+        <color>ff0000ff</color>
+        <scale>1.0</scale>
         <Icon>
           <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
         </Icon>
       </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>0.8</scale>
+      </LabelStyle>
     </Style>
 
     <Style id="polygonStyle">
@@ -31,114 +35,197 @@
       </PolyStyle>
     </Style>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.0564893656605,39.16675368620348,0</coordinates>
-      </Point>
-    </Placemark>
+    <Folder>
+      <name>Retaining Wall Points</name>
+      <description>11 retaining wall station points</description>
+      <open>1</open>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05646681259198,39.16681608008235,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+000.00</name>
+        <description>Station: 0+000.00
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829164.62 ft
+  Northing: 2188121.10 ft
+Direction: 2.8816202376385256
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.0564893656605,39.16675368620348,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05644362948921,39.166878333876376,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+007.32</name>
+        <description>Station: 0+007.32
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829170.78 ft
+  Northing: 2188143.88 ft
+Direction: 2.8737513851760634
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05646681259198,39.16681608008235,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05634462599838,39.16712587123835,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+014.63</name>
+        <description>Station: 0+014.63
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829177.12 ft
+  Northing: 2188166.62 ft
+Direction: 2.8658825327121047
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05644362948921,39.166878333876376,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05629138317524,39.167248699613495,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+043.89</name>
+        <description>Station: 0+043.89
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829204.25 ft
+  Northing: 2188257.06 ft
+Direction: 2.834407122884131
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05634462599838,39.16712587123835,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05623566366164,39.167370860499815,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+058.52</name>
+        <description>Station: 0+058.52
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829218.88 ft
+  Northing: 2188301.95 ft
+Direction: 2.8186694179643297
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05629138317524,39.167248699613495,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.0561774812464,39.1674923236382,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+073.15</name>
+        <description>Station: 0+073.15
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829234.21 ft
+  Northing: 2188346.61 ft
+Direction: 2.802931713048032
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05623566366164,39.167370860499815,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.0560537859145,39.16773303650562,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+087.78</name>
+        <description>Station: 0+087.78
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829250.25 ft
+  Northing: 2188391.01 ft
+Direction: 2.78719400812078
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.0561774812464,39.1674923236382,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.0559546607955,39.167911517130364,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+117.4</name>
+        <description>Station: 0+117.4
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829284.40 ft
+  Northing: 2188479.04 ft
+Direction: 2.7557185982879497
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.0560537859145,39.16773303650562,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05590887330874,39.167990247093066,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+138.99</name>
+        <description>Station: 0+138.99
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829311.83 ft
+  Northing: 2188544.33 ft
+Direction: 2.732112040923465
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.0559546607955,39.167911517130364,0</coordinates>
+        </Point>
+      </Placemark>
 
-    <Placemark>
-      <name>Line</name>
-      <description>Type: IfcBuildingElementProxy</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>-121.05639537895576,39.16700240579867,0</coordinates>
-      </Point>
-    </Placemark>
+      <Placemark>
+        <name>RW Sta 0+148.74</name>
+        <description>Station: 0+148.74
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829324.51 ft
+  Northing: 2188573.14 ft
+Direction: 2.72162023764958
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05590887330874,39.167990247093066,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>RW Sta 0+029.26</name>
+        <description>Station: 0+029.26
+Type: IfcBuildingElementProxy
+Coordinates (State Plane):
+  Easting: 6829190.33 ft
+  Northing: 2188211.95 ft
+Direction: 2.850144827811383
+Length: 99.99999999999999
+Horizontal Offset: 0.0</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-121.05639537895576,39.16700240579867,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
   </Document>
 </kml>
