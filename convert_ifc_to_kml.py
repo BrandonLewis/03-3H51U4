@@ -70,6 +70,27 @@ def extract_geometry_from_ifc(ifc_file):
     project_name = project.Name if project else "IFC Model"
 
     # First, try to extract points from property sets (common for survey data)
+    # Build a map of elements to their properties
+    element_properties = {}
+
+    for rel in ifc.by_type("IfcRelDefinesByProperties"):
+        pset = rel.RelatingPropertyDefinition
+        if hasattr(pset, 'HasProperties'):
+            for obj in rel.RelatedObjects:
+                if obj.id() not in element_properties:
+                    element_properties[obj.id()] = {}
+
+                # Extract all properties
+                for prop in pset.HasProperties:
+                    if hasattr(prop, 'Name') and hasattr(prop, 'NominalValue'):
+                        prop_name = prop.Name
+                        if hasattr(prop.NominalValue, 'wrappedValue'):
+                            prop_value = prop.NominalValue.wrappedValue
+                        else:
+                            prop_value = str(prop.NominalValue)
+                        element_properties[obj.id()][prop_name] = prop_value
+
+    # Now extract points with all their properties
     property_sets = ifc.by_type("IfcPropertySet")
     for pset in property_sets:
         if hasattr(pset, 'HasProperties'):
@@ -86,12 +107,28 @@ def extract_geometry_from_ifc(ifc_file):
                                 for rel in ifc.by_type("IfcRelDefinesByProperties"):
                                     if rel.RelatingPropertyDefinition == pset:
                                         for obj in rel.RelatedObjects:
-                                            name = obj.Name if hasattr(obj, 'Name') and obj.Name else f"{obj.is_a()}"
+                                            # Get station if available
+                                            props = element_properties.get(obj.id(), {})
+                                            station = props.get('Station', '')
+                                            feature_name = props.get('Feature Name', '')
+
+                                            # Use station as name if available, otherwise use feature name or object name
+                                            if station:
+                                                name = f"RW Sta {station}"
+                                            elif feature_name:
+                                                name = feature_name
+                                            elif hasattr(obj, 'Name') and obj.Name:
+                                                name = obj.Name
+                                            else:
+                                                name = f"{obj.is_a()}"
+
                                             points.append({
                                                 'name': name,
                                                 'type': obj.is_a() if hasattr(obj, 'is_a') else 'Unknown',
                                                 'coords': (coords[0], coords[1], coords[2]),
-                                                'from_meters': True  # IFC base units are meters
+                                                'from_meters': True,  # IFC base units are meters
+                                                'station': station,
+                                                'properties': props
                                             })
                                             break
                         except:
@@ -213,12 +250,16 @@ def create_kml_from_geometry(geometry_data, output_file):
     points = geometry_data['points']
     polygons = geometry_data['polygons']
 
+    # Extract file name for better layer naming
+    import os
+    file_basename = os.path.splitext(os.path.basename(output_file))[0]
+
     # Build KML content
     kml_content = f'''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>{project_name}</name>
-    <description>IFC model converted to KML from EPSG:2871 (CA State Plane Zone II)</description>
+    <name>{file_basename}</name>
+    <description>Retaining Wall (RW) points from IFC file. Coordinates in EPSG:2871 (CA State Plane Zone II) converted to WGS84.</description>
 
     <Style id="lineStyle">
       <LineStyle>
@@ -227,14 +268,18 @@ def create_kml_from_geometry(geometry_data, output_file):
       </LineStyle>
     </Style>
 
-    <Style id="pointStyle">
+    <Style id="rwPointStyle">
       <IconStyle>
-        <color>ff00ff00</color>
-        <scale>0.8</scale>
+        <color>ff0000ff</color>
+        <scale>1.0</scale>
         <Icon>
           <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
         </Icon>
       </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>0.8</scale>
+      </LabelStyle>
     </Style>
 
     <Style id="polygonStyle">
@@ -248,85 +293,134 @@ def create_kml_from_geometry(geometry_data, output_file):
     </Style>
 '''
 
-    # Add lines
-    for idx, line in enumerate(lines):
-        name = line['name'] or f"Line {idx+1}"
-        line_type = line['type']
-        from_meters = line.get('from_meters', True)  # IFC uses meters by default
-        coords = []
-
-        for point in line['points']:
-            lon, lat, elev = transform_point(point[0], point[1], point[2], from_meters=from_meters)
-            coords.append(f'{lon},{lat},0')
-
+    # Add lines organized in a folder
+    if lines:
         kml_content += f'''
-    <Placemark>
-      <name>{name}</name>
-      <description>Type: {line_type}</description>
-      <styleUrl>#lineStyle</styleUrl>
-      <LineString>
-        <extrude>0</extrude>
-        <tessellate>1</tessellate>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>
-          {' '.join(coords)}
-        </coordinates>
-      </LineString>
-    </Placemark>
+    <Folder>
+      <name>Lines</name>
+      <description>{len(lines)} line features</description>
+      <open>0</open>
+'''
+        for idx, line in enumerate(lines):
+            name = line['name'] or f"Line {idx+1}"
+            line_type = line['type']
+            from_meters = line.get('from_meters', True)  # IFC uses meters by default
+            coords = []
+
+            for point in line['points']:
+                lon, lat, elev = transform_point(point[0], point[1], point[2], from_meters=from_meters)
+                coords.append(f'{lon},{lat},0')
+
+            kml_content += f'''
+      <Placemark>
+        <name>{name}</name>
+        <description>Type: {line_type}</description>
+        <styleUrl>#lineStyle</styleUrl>
+        <LineString>
+          <extrude>0</extrude>
+          <tessellate>1</tessellate>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>
+            {' '.join(coords)}
+          </coordinates>
+        </LineString>
+      </Placemark>
+'''
+        kml_content += '''    </Folder>
 '''
 
-    # Add points
-    for idx, point in enumerate(points):
-        name = point['name'] or f"Point {idx+1}"
-        point_type = point['type']
-        from_meters = point.get('from_meters', True)  # IFC uses meters by default
-        lon, lat, elev = transform_point(point['coords'][0], point['coords'][1], point['coords'][2], from_meters=from_meters)
-
+    # Add points organized in a folder
+    if points:
         kml_content += f'''
-    <Placemark>
-      <name>{name}</name>
-      <description>Type: {point_type}</description>
-      <styleUrl>#pointStyle</styleUrl>
-      <Point>
-        <altitudeMode>clampToGround</altitudeMode>
-        <coordinates>{lon},{lat},0</coordinates>
-      </Point>
-    </Placemark>
+    <Folder>
+      <name>Retaining Wall Points</name>
+      <description>{len(points)} retaining wall station points</description>
+      <open>1</open>
+'''
+        for idx, point in enumerate(points):
+            name = point['name'] or f"Point {idx+1}"
+            point_type = point['type']
+            from_meters = point.get('from_meters', True)  # IFC uses meters by default
+            lon, lat, elev = transform_point(point['coords'][0], point['coords'][1], point['coords'][2], from_meters=from_meters)
+
+            # Build description with properties
+            station = point.get('station', 'N/A')
+            props = point.get('properties', {})
+
+            description_lines = [
+                f"Station: {station}",
+                f"Type: {point_type}",
+                f"Coordinates (State Plane):",
+                f"  Easting: {point['coords'][0] * (1/0.3048006096012192):.2f} ft",
+                f"  Northing: {point['coords'][1] * (1/0.3048006096012192):.2f} ft"
+            ]
+
+            # Add additional properties if available
+            if 'Direction' in props:
+                description_lines.append(f"Direction: {props['Direction']}")
+            if 'Length' in props:
+                description_lines.append(f"Length: {props['Length']}")
+            if 'Horizontal Offset' in props:
+                description_lines.append(f"Horizontal Offset: {props['Horizontal Offset']}")
+
+            description = '\n'.join(description_lines)
+
+            kml_content += f'''
+      <Placemark>
+        <name>{name}</name>
+        <description>{description}</description>
+        <styleUrl>#rwPointStyle</styleUrl>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>{lon},{lat},0</coordinates>
+        </Point>
+      </Placemark>
+'''
+        kml_content += '''    </Folder>
 '''
 
-    # Add polygons
-    for idx, polygon in enumerate(polygons):
-        name = polygon['name'] or f"Polygon {idx+1}"
-        polygon_type = polygon['type']
-        from_meters = polygon.get('from_meters', True)  # IFC uses meters by default
-        coords = []
-
-        for point in polygon['points']:
-            lon, lat, elev = transform_point(point[0], point[1], point[2], from_meters=from_meters)
-            coords.append(f'{lon},{lat},0')
-
-        # Close the polygon
-        if coords and coords[0] != coords[-1]:
-            coords.append(coords[0])
-
+    # Add polygons organized in a folder
+    if polygons:
         kml_content += f'''
-    <Placemark>
-      <name>{name}</name>
-      <description>Type: {polygon_type}</description>
-      <styleUrl>#polygonStyle</styleUrl>
-      <Polygon>
-        <extrude>0</extrude>
-        <tessellate>1</tessellate>
-        <altitudeMode>clampToGround</altitudeMode>
-        <outerBoundaryIs>
-          <LinearRing>
-            <coordinates>
-              {' '.join(coords)}
-            </coordinates>
-          </LinearRing>
-        </outerBoundaryIs>
-      </Polygon>
-    </Placemark>
+    <Folder>
+      <name>Polygons</name>
+      <description>{len(polygons)} polygon features</description>
+      <open>0</open>
+'''
+        for idx, polygon in enumerate(polygons):
+            name = polygon['name'] or f"Polygon {idx+1}"
+            polygon_type = polygon['type']
+            from_meters = polygon.get('from_meters', True)  # IFC uses meters by default
+            coords = []
+
+            for point in polygon['points']:
+                lon, lat, elev = transform_point(point[0], point[1], point[2], from_meters=from_meters)
+                coords.append(f'{lon},{lat},0')
+
+            # Close the polygon
+            if coords and coords[0] != coords[-1]:
+                coords.append(coords[0])
+
+            kml_content += f'''
+      <Placemark>
+        <name>{name}</name>
+        <description>Type: {polygon_type}</description>
+        <styleUrl>#polygonStyle</styleUrl>
+        <Polygon>
+          <extrude>0</extrude>
+          <tessellate>1</tessellate>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                {' '.join(coords)}
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+'''
+        kml_content += '''    </Folder>
 '''
 
     kml_content += '''  </Document>
