@@ -26,8 +26,8 @@ Northing: 2227366.900
 Elevation: 2088.910 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.0795627123984,39.27470025690451,636.699768</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0795627123984,39.27470025690451,0</coordinates>
       </Point>
     </Placemark>
 
@@ -39,8 +39,8 @@ Northing: 2171649.060
 Elevation: 1774.540 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.07890466847664,39.12170256211256,540.8797920000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.07890466847664,39.12170256211256,0</coordinates>
       </Point>
     </Placemark>
 
@@ -52,8 +52,8 @@ Northing: 2190701.310
 Elevation: 2468.700 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.04600344547451,39.173753401044614,752.45976</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.04600344547451,39.173753401044614,0</coordinates>
       </Point>
     </Placemark>
 
@@ -65,8 +65,8 @@ Northing: 2229242.620
 Elevation: 2914.310 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-120.9992650417831,39.279190934459706,888.281688</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-120.9992650417831,39.279190934459706,0</coordinates>
       </Point>
     </Placemark>
 
@@ -78,8 +78,8 @@ Northing: 2202240.290
 Elevation: 2329.450 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.10743912801412,39.205923450966914,710.01636</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.10743912801412,39.205923450966914,0</coordinates>
       </Point>
     </Placemark>
 
@@ -91,8 +91,8 @@ Northing: 2170687.170
 Elevation: 2453.160 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-120.94938665416598,39.11796677429287,747.723168</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-120.94938665416598,39.11796677429287,0</coordinates>
       </Point>
     </Placemark>
 
@@ -104,8 +104,8 @@ Northing: 2184218.830
 Elevation: 2265.790 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.06284095924615,39.15608973462084,690.612792</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.06284095924615,39.15608973462084,0</coordinates>
       </Point>
     </Placemark>
 
@@ -117,8 +117,8 @@ Northing: 2185331.160
 Elevation: 2284.200 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05977687969917,39.159119409769374,696.22416</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05977687969917,39.159119409769374,0</coordinates>
       </Point>
     </Placemark>
 
@@ -130,8 +130,8 @@ Northing: 2196712.010
 Elevation: 2358.910 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05243026266538,39.190310294776204,718.995768</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05243026266538,39.190310294776204,0</coordinates>
       </Point>
     </Placemark>
 
@@ -143,8 +143,8 @@ Northing: 2200344.820
 Elevation: 2448.920 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05943411717949,39.20034207781899,746.430816</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05943411717949,39.20034207781899,0</coordinates>
       </Point>
     </Placemark>
 
@@ -156,8 +156,8 @@ Northing: 2201389.950
 Elevation: 2409.850 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.06314609306618,39.20324168023677,734.52228</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.06314609306618,39.20324168023677,0</coordinates>
       </Point>
     </Placemark>
 
@@ -169,8 +169,8 @@ Northing: 2186505.990
 Elevation: 2260.810 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05761200318994,39.16232788474002,689.094888</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05761200318994,39.16232788474002,0</coordinates>
       </Point>
     </Placemark>
 
@@ -182,8 +182,8 @@ Northing: 2187051.010
 Elevation: 2235.970 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05710441630382,39.16382034053008,681.523656</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05710441630382,39.16382034053008,0</coordinates>
       </Point>
     </Placemark>
 
@@ -195,8 +195,8 @@ Northing: 2187502.900
 Elevation: 2248.200 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05675381353254,39.165058339527945,685.25136</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05675381353254,39.165058339527945,0</coordinates>
       </Point>
     </Placemark>
 
@@ -208,8 +208,8 @@ Northing: 2188082.920
 Elevation: 2274.520 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05677091784132,39.16665113717773,693.273696</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05677091784132,39.16665113717773,0</coordinates>
       </Point>
     </Placemark>
 
@@ -221,8 +221,8 @@ Northing: 2188542.030
 Elevation: 2290.210 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05629221147146,39.16790792431335,698.056008</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05629221147146,39.16790792431335,0</coordinates>
       </Point>
     </Placemark>
 
@@ -234,8 +234,8 @@ Northing: 2188949.420
 Elevation: 2284.920 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05550866870547,39.169020227124825,696.443616</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05550866870547,39.169020227124825,0</coordinates>
       </Point>
     </Placemark>
 
@@ -247,8 +247,8 @@ Northing: 2190199.150
 Elevation: 2326.090 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05406091332111,39.172440098840795,708.9922320000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05406091332111,39.172440098840795,0</coordinates>
       </Point>
     </Placemark>
 
@@ -260,8 +260,8 @@ Northing: 2190690.010
 Elevation: 2352.730 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05416345411926,39.173788765782064,717.112104</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05416345411926,39.173788765782064,0</coordinates>
       </Point>
     </Placemark>
 
@@ -273,8 +273,8 @@ Northing: 2191599.580
 Elevation: 2395.610 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05366027555776,39.176282245432255,730.1819280000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05366027555776,39.176282245432255,0</coordinates>
       </Point>
     </Placemark>
 
@@ -286,8 +286,8 @@ Northing: 2192174.550
 Elevation: 2414.840 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.0534678227373,39.17785947523809,736.0432320000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0534678227373,39.17785947523809,0</coordinates>
       </Point>
     </Placemark>
 
@@ -299,8 +299,8 @@ Northing: 2192471.170
 Elevation: 2423.870 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05350500482474,39.17867425488268,738.795576</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05350500482474,39.17867425488268,0</coordinates>
       </Point>
     </Placemark>
 
@@ -312,8 +312,8 @@ Northing: 2193275.100
 Elevation: 2434.950 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05310978857425,39.18087853236838,742.1727599999999</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05310978857425,39.18087853236838,0</coordinates>
       </Point>
     </Placemark>
 
@@ -325,8 +325,8 @@ Northing: 2193682.800
 Elevation: 2438.350 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.0527227685087,39.18199488132504,743.20908</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0527227685087,39.18199488132504,0</coordinates>
       </Point>
     </Placemark>
 
@@ -338,8 +338,8 @@ Northing: 2194257.460
 Elevation: 2441.800 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.0526287868925,39.183572055835576,744.2606400000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0526287868925,39.183572055835576,0</coordinates>
       </Point>
     </Placemark>
 
@@ -351,8 +351,8 @@ Northing: 2194589.250
 Elevation: 2434.370 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05228334378276,39.18448030191971,741.995976</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05228334378276,39.18448030191971,0</coordinates>
       </Point>
     </Placemark>
 
@@ -364,8 +364,8 @@ Northing: 2195320.980
 Elevation: 2390.920 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05210994122167,39.186488122960405,728.752416</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05210994122167,39.186488122960405,0</coordinates>
       </Point>
     </Placemark>
 
@@ -377,8 +377,8 @@ Northing: 2195815.110
 Elevation: 2369.010 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05174001413035,39.187841931151084,722.0742480000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05174001413035,39.187841931151084,0</coordinates>
       </Point>
     </Placemark>
 
@@ -390,8 +390,8 @@ Northing: 2196495.190
 Elevation: 2361.450 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05190863470449,39.18971070397547,719.76996</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05190863470449,39.18971070397547,0</coordinates>
       </Point>
     </Placemark>
 
@@ -403,8 +403,8 @@ Northing: 2196085.460
 Elevation: 2366.980 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05172709772418,39.188584169288866,721.455504</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05172709772418,39.188584169288866,0</coordinates>
       </Point>
     </Placemark>
 
@@ -416,8 +416,8 @@ Northing: 2197073.130
 Elevation: 2371.200 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05247762688066,39.19130226315124,722.74176</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05247762688066,39.19130226315124,0</coordinates>
       </Point>
     </Placemark>
 
@@ -429,8 +429,8 @@ Northing: 2197612.320
 Elevation: 2386.010 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05331491186948,39.192789592127134,727.2558480000001</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05331491186948,39.192789592127134,0</coordinates>
       </Point>
     </Placemark>
 
@@ -442,8 +442,8 @@ Northing: 2198237.320
 Elevation: 2393.520 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05479547440439,39.1945177443907,729.544896</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05479547440439,39.1945177443907,0</coordinates>
       </Point>
     </Placemark>
 
@@ -455,8 +455,8 @@ Northing: 2198929.300
 Elevation: 2399.890 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05559213574496,39.19642426551279,731.486472</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05559213574496,39.19642426551279,0</coordinates>
       </Point>
     </Placemark>
 
@@ -468,8 +468,8 @@ Northing: 2199903.210
 Elevation: 2418.400 ft</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>-121.05771203110265,39.199115601599125,737.12832</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05771203110265,39.199115601599125,0</coordinates>
       </Point>
     </Placemark>
   </Document>

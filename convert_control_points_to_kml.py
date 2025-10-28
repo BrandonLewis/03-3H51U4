@@ -121,8 +121,8 @@ Elevation: {elevation:.3f} ft
       <description>{description.strip()}</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
-        <altitudeMode>absolute</altitudeMode>
-        <coordinates>{lon},{lat},{elevation * 0.3048}</coordinates>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>{lon},{lat},0</coordinates>
       </Point>
     </Placemark>
 '''
