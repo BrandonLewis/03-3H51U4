@@ -1,0 +1,140 @@
+================================================================================
+FOCUSED SCALE FACTOR TEST
+Problem: CM 10.99 to RW Sta 0+035.11
+Expected from plans: ~83 ft
+================================================================================
+
+METHOD 1: User-Provided Coordinates
+--------------------------------------------------------------------------------
+RW Sta 0+035.11: E=2081471.89, N=666616.08
+Site Origin:     E=2081539.56, N=667013.23
+
+Offset from Site Origin:
+  ΔE = -67.67 m
+  ΔN = -397.15 m
+
+Direct distance:
+  402.87 m = 1321.76 ft
+  Error from expected: 1238.76 ft
+  This is 15.92x the expected distance
+
+================================================================================
+TESTING DIFFERENT SCALE FACTORS
+================================================================================
+
+Target distance: 83.00 ft
+--------------------------------------------------------------------------------
+Factor  0.250x:   330.44 ft  (error: 247.44 ft, 298.1%)
+Factor  0.300x:   396.53 ft  (error: 313.53 ft, 377.7%)
+Factor  0.350x:   462.62 ft  (error: 379.62 ft, 457.4%)
+Factor  0.400x:   528.71 ft  (error: 445.71 ft, 537.0%)
+Factor  0.450x:   594.79 ft  (error: 511.79 ft, 616.6%)
+Factor  0.500x:   660.88 ft  (error: 577.88 ft, 696.2%)
+Factor  0.550x:   726.97 ft  (error: 643.97 ft, 775.9%)
+Factor  0.600x:   793.06 ft  (error: 710.06 ft, 855.5%)
+Factor  0.650x:   859.15 ft  (error: 776.15 ft, 935.1%)
+Factor  0.700x:   925.24 ft  (error: 842.24 ft, 1014.7%)
+Factor  1.000x:  1321.76 ft  (error: 1238.76 ft, 1492.5%)
+Factor  1.500x:  1982.65 ft  (error: 1899.65 ft, 2288.7%)
+Factor  2.000x:  2643.53 ft  (error: 2560.53 ft, 3085.0%)
+Factor  2.110x:  2788.92 ft  (error: 2705.92 ft, 3260.1%)
+Factor  2.500x:  3304.41 ft  (error: 3221.41 ft, 3881.2%)
+Factor  3.000x:  3965.29 ft  (error: 3882.29 ft, 4677.5%)
+Factor  3.281x:  4336.50 ft  (error: 4253.50 ft, 5124.7%)
+
+Best match: 0.25x with error of 247.44 ft
+
+================================================================================
+EXACT FACTOR CALCULATION
+================================================================================
+Exact factor needed: 0.062795x
+Verification: 83.00 ft (should be 83.00 ft)
+
+================================================================================
+METHOD 2: Extract Coordinates from IFC
+================================================================================
+
+Searching for RW Sta 0+035.11 in IFC...
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+  Found: Line
+  Station: 0+035.11
+  Start Point: E=2081471.89, N=666616.08, Z=0.00
+
+Searching for CM 10.99 reference...
+(CM points are in Control Points CSV with different coordinate system)
+
+================================================================================
+KEY HYPOTHESIS
+================================================================================
+
+The exact factor needed is 0.062795x
+
+Possible explanations:
+1. IFC coordinates are in a different unit than declared
+   - Declared as meters but actually in some other unit
+
+2. IFC export applied a scale factor during export
+   - Civil 3D may have applied a transformation
+
+3. Site origin is incorrect
+   - The reference point used for offset calculation is wrong
+
+4. Coordinate reference frame mismatch
+   - IFC uses local project coordinates
+   - Plans use different reference system
+
+5. The distance measurement is ALONG THE ALIGNMENT, not straight-line
+   - If the alignment is curved, straight-line distance ≠ station distance
+   - This could explain the discrepancy!
+
+================================================================================
+ALIGNMENT DISTANCE vs STRAIGHT-LINE DISTANCE
+================================================================================
+
+CRITICAL QUESTION: How was the 83 ft measured?
+
+Option A: Straight-line distance (Euclidean)
+  - sqrt((ΔE)^2 + (ΔN)^2)
+  - This is what we've been calculating
+
+Option B: Distance along alignment (station distance)
+  - Following the curve/line of the road
+  - Could be different from straight-line if alignment is curved
+
+Option C: Horizontal distance only (ignoring elevation)
+  - We've been doing this already (Z=0)
+
+If the 83 ft is measured ALONG THE ALIGNMENT:
+  - We should be comparing station values, not coordinate distances
+  - The curve of the alignment would make the station distance longer
+    than the straight-line coordinate distance
+
+ACTION NEEDED:
+  - Clarify how the 83 ft was measured
+  - Check if CM 10.99 and RW Sta 0+035.11 are on the same alignment
+  - If they're on different alignments, we need to find the relationship
+
+
+================================================================================
+END OF SCALE FACTOR TEST
+================================================================================

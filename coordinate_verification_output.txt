@@ -1,0 +1,162 @@
+================================================================================
+CRITICAL COORDINATE TRANSFORMATION VERIFICATION
+================================================================================
+
+PART 1: Transform CM 10.99 to matching coordinate system
+--------------------------------------------------------------------------------
+
+CM 10.99 (from Control Points CSV in EPSG:2871):
+  Easting:  6829001.34 ft
+  Northing: 2187051.01 ft
+
+CM 10.99 transformed to EPSG:2767:
+  Easting:  2081483.77 m
+  Northing: 666614.48 m
+
+================================================================================
+PART 2: RW Sta 0+035.11 coordinates from IFC
+--------------------------------------------------------------------------------
+
+RW Sta 0+035.11 (from IFC in EPSG:2767):
+  Easting:  2081471.89 m
+  Northing: 666616.08 m
+
+================================================================================
+PART 3: Calculate distance (both in EPSG:2767)
+--------------------------------------------------------------------------------
+
+Offset from RW to CM:
+  ΔE = 11.88 m
+  ΔN = -1.60 m
+
+Distance (Euclidean):
+  11.99 m
+  39.33 ft
+
+Comparison:
+  Expected (from plans): 83 ft
+  Calculated: 39.33 ft
+  Error: 43.67 ft
+
+  ⚠ Matches user's reported measurement of 39.34 ft
+  But this is still 2x off from expected 83 ft
+
+================================================================================
+PART 4: Alternative - Transform RW to EPSG:2871 (feet)
+--------------------------------------------------------------------------------
+
+RW Sta 0+035.11 transformed to EPSG:2871:
+  Easting:  6828962.36 ft
+  Northing: 2187056.26 ft
+
+CM 10.99 (in EPSG:2871):
+  Easting:  6829001.34 ft
+  Northing: 2187051.01 ft
+
+Offset:
+  ΔE = 38.98 ft
+  ΔN = -5.25 ft
+
+Distance:
+  39.33 ft
+
+Verification:
+  Method 1 (both in meters): 39.33 ft
+  Method 2 (both in feet):   39.33 ft
+  Difference: 0.0001 ft
+  ✓ Both methods agree (as they should)
+
+================================================================================
+PART 5: Find which CM point gives ~83 ft distance
+--------------------------------------------------------------------------------
+
+Checking all CM points from /home/user/03-3H51U4/DATA/Control Points.csv...
+Found 24 CM points
+
+Distances to RW Sta 0+035.11:
+--------------------------------------------------------------------------------
+  CM 10.90    :   559.15 ft
+  CM 10.99    :    39.33 ft ⚠ Close to reported 39.34 ft
+  CM 11.10    :   466.23 ft
+  CM 11.21    :  1033.99 ft
+  CM 11.30    :  1507.30 ft
+  CM 11.43    :  1951.05 ft
+  CM 11.62    :  3260.87 ft
+  CM 11.76    :  3728.46 ft
+  CM 11.90    :  4645.35 ft
+  CM 11.98    :  5218.31 ft
+  CM 12.04    :  5507.05 ft
+  CM 12.19    :  6316.58 ft
+  CM 12.38    :  6736.53 ft
+  CM 12.49    :  7305.99 ft
+  CM 12.54    :  7649.06 ft
+  CM 12.59    :  8377.33 ft
+  CM 12.68    :  8881.13 ft
+  CM 12.70    :  9544.23 ft
+  CM 12.73    :  9148.01 ft
+  CM 12.92    : 10094.14 ft
+  CM 13.03    : 10603.67 ft
+  CM 13.16    : 11195.98 ft
+  CM 13.34    : 11878.06 ft
+  CM 13.53    : 12849.75 ft
+
+================================================================================
+PART 6: Test if IFC coordinates are actually in FEET (EPSG:2871)
+--------------------------------------------------------------------------------
+
+Hypothesis: What if IFC 'Start Point' values are in EPSG:2871 (feet)
+            but declared as meters?
+--------------------------------------------------------------------------------
+
+RW Sta 0+035.11 (treating IFC values as EPSG:2871 feet):
+  Easting:  2081471.89 ft
+  Northing: 666616.08 ft
+
+CM 10.99 (EPSG:2871):
+  Easting:  6829001.34 ft
+  Northing: 2187051.01 ft
+
+Distance (if IFC values are actually in EPSG:2871):
+  4985053.49 ft
+
+Comparison:
+  Expected: 83 ft
+  If IFC in feet: 4985053.49 ft
+  Error: 4984970.49 ft
+
+  ✗ Still doesn't match (off by 4984970.49 ft)
+
+================================================================================
+SUMMARY
+================================================================================
+
+1. COORDINATE TRANSFORMATION RESULTS:
+   CM 10.99: E=2081483.77 m, N=666614.48 m (EPSG:2767)
+   RW Sta 0+035.11: E=2081471.89 m, N=666616.08 m (EPSG:2767)
+
+2. DISTANCE CALCULATION (correct transformation):
+   39.33 ft
+
+3. COMPARISON WITH EXPECTED:
+   Expected: 83 ft
+   Calculated: 39.33 ft
+   Error: 43.67 ft
+   ✗ NO MATCH
+
+4. HYPOTHESIS TEST (IFC values are feet, not meters):
+   4985053.49 ft
+   ✗ Hypothesis rejected
+
+CONCLUSION:
+
+
+   Neither hypothesis explains the discrepancy. The issue may be:
+   - Wrong reference points (not actually CM 10.99 or RW Sta 0+035.11)
+   - Distance measured along alignment, not straight-line
+   - Different measurement method in the plans
+   - Additional coordinate transformation we haven't identified
+
+   RECOMMENDATION: Verify the source of "83 ft" measurement.
+    
+
+================================================================================
