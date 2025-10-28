@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>MyProject</name>
+    <description>IFC model converted to KML from EPSG:2871 (CA State Plane Zone II)</description>
+
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>ff00ffff</color>
+        <width>2</width>
+      </LineStyle>
+    </Style>
+
+    <Style id="pointStyle">
+      <IconStyle>
+        <color>ff00ff00</color>
+        <scale>0.8</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <Style id="polygonStyle">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7f0000ff</color>
+      </PolyStyle>
+    </Style>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0552849139691,39.16900478544979,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05514340337146,39.16924898477669,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05501182377436,39.169496526167755,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0549497991613,39.169621473802245,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05489030533282,39.16974716495859,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05486151208581,39.169810279658215,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05480584182875,39.16993702780462,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05477896826145,39.170000653420956,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05475273796414,39.1700644414951,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05467792271544,39.17025674100731,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05463129091024,39.17038568046585,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05458726868125,39.170515174598414,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05456623958723,39.17058011967238,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05454586692169,39.17064519140433,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05452615194508,39.170710385773994,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05450709587727,39.170775698753566,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05448869989738,39.17084112630787,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05447096514379,39.17090666439468,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05445389271406,39.17097230896491,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05443748366477,39.171038055962846,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05440665972912,39.171169840987716,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05439224675088,39.171235870872614,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05437850096915,39.171301986901646,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Line</name>
+      <description>Type: IfcBuildingElementProxy</description>
+      <styleUrl>#pointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05437406745612,39.171324044015265,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
