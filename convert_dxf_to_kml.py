@@ -9,35 +9,50 @@ from pyproj import Transformer
 import sys
 import os
 import math
+import argparse
 
 def get_transformer(source_epsg='EPSG:2871', target_epsg='EPSG:4326'):
     """
-    Create a coordinate transformer (cached to reuse).
+    Create a 2D coordinate transformer for horizontal coordinates.
+
+    Note: EPSG:2871 is a 2D horizontal CRS without vertical datum specification.
+    Elevation values are treated as orthometric heights (NAVD88 or similar) and
+    only require unit conversion (US Survey Feet to meters), not datum transformation.
 
     Args:
         source_epsg: Source coordinate system (default: EPSG:2871)
         target_epsg: Target coordinate system (default: WGS84)
 
     Returns:
-        Transformer object
+        Transformer object for 2D horizontal transformation
     """
     return Transformer.from_crs(source_epsg, target_epsg, always_xy=True)
 
 def transform_point(x, y, z, transformer):
     """
     Transform coordinates from EPSG:2871 (US Survey Feet) to WGS84.
+    Transforms horizontal coordinates and converts elevation units.
 
     Args:
         x: Easting in US Survey Feet
         y: Northing in US Survey Feet
-        z: Elevation in feet
-        transformer: pyproj Transformer object
+        z: Elevation in US Survey Feet (orthometric height, likely NAVD88)
+        transformer: pyproj Transformer object for 2D horizontal transformation
 
     Returns:
-        tuple: (longitude, latitude, elevation)
+        tuple: (longitude, latitude, elevation_meters)
+            - longitude: WGS84 longitude in decimal degrees
+            - latitude: WGS84 latitude in decimal degrees
+            - elevation_meters: Elevation in meters (unit conversion only, same vertical datum)
     """
+    # Transform horizontal coordinates (2D)
     lon, lat = transformer.transform(x, y)
-    return lon, lat, z
+
+    # Convert elevation from US Survey Feet to meters (unit conversion only)
+    # 1 US Survey Foot = 0.3048006096 meters
+    elev_meters = z * 0.3048006096
+
+    return lon, lat, elev_meters
 
 def calculate_cumulative_distances(points):
     """
@@ -168,8 +183,16 @@ def create_kml(points, polylines, output_file, file_description, start_station=N
         print(f"  Calculating cumulative distances...")
         cumulative_distances = calculate_cumulative_distances(points)
         total_distance = cumulative_distances[-1]
+        expected_distance = end_station - start_station
         print(f"  Total distance: {total_distance:.2f} feet")
         print(f"  Station range: {format_station(start_station)} to {format_station(end_station)}")
+        print(f"  Expected distance: {expected_distance:.2f} feet")
+
+        # Validate that measured distance matches station range
+        distance_diff = abs(total_distance - expected_distance)
+        if distance_diff > 1.0:  # Tolerance of 1 foot
+            print(f"  WARNING: Measured distance ({total_distance:.2f} ft) differs from station range ({expected_distance:.2f} ft) by {distance_diff:.2f} ft")
+            print(f"           This may indicate incorrect station values or non-linear alignment")
 
     # Use list for efficient string building
     kml_parts = []
@@ -217,13 +240,16 @@ def create_kml(points, polylines, output_file, file_description, start_station=N
 
             lon, lat, elev = transform_point(x, y, z, transformer)
 
+            # Calculate elevation in feet for display
+            elev_ft = elev * 3.28084  # Convert meters to feet
+
             # Calculate point name
             if include_stations:
                 # Calculate station value
                 if start_station is not None and end_station is not None and cumulative_distances:
-                    # Interpolate station based on distance along alignment
-                    progress = cumulative_distances[i] / total_distance
-                    station_ft = start_station + (end_station - start_station) * progress
+                    # Calculate station by adding cumulative distance to start station
+                    # This gives the actual station value based on measured distance
+                    station_ft = start_station + cumulative_distances[i]
                     station_str = format_station(station_ft)
                 else:
                     # Fallback to approximate station based on index
@@ -238,8 +264,9 @@ def create_kml(points, polylines, output_file, file_description, start_station=N
             <name>{point_name}</name>
             <description>
                 Layer: {layer}
-                Elevation: {elev:.2f} ft
-                Original Coords: ({x:.2f}, {y:.2f}, {z:.2f})
+                Elevation: {elev:.2f} m ({elev_ft:.2f} ft)
+                Original Coords (EPSG:2871): ({x:.2f}, {y:.2f}, {z:.2f}) ft
+                Note: Elevation is orthometric height (likely NAVD88)
             </description>
             <styleUrl>#pointStyle</styleUrl>
             <Point>
@@ -282,10 +309,10 @@ def create_kml(points, polylines, output_file, file_description, start_station=N
             # Transform all coordinates at once for this polyline
             coord_strings = []
             for x, y, z in coords:
-                lon, lat, elev = transform_point(x, y, z, transformer)
+                lon, lat, elev_meters = transform_point(x, y, z, transformer)
                 if polyline_elevation:
-                    # Include elevation for absolute altitude mode
-                    coord_strings.append(f'{lon:.10f},{lat:.10f},{elev:.2f}')
+                    # Include elevation in meters for absolute altitude mode (orthometric height)
+                    coord_strings.append(f'{lon:.10f},{lat:.10f},{elev_meters:.2f}')
                 else:
                     # Clamp to ground (elevation = 0)
                     coord_strings.append(f'{lon:.10f},{lat:.10f},0')
@@ -348,27 +375,131 @@ def convert_dxf_to_kml(dxf_file, output_file=None, start_station=None, end_stati
     return output_file
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        # Process specified files
-        for dxf_file in sys.argv[1:]:
-            if os.path.exists(dxf_file):
-                convert_dxf_to_kml(dxf_file)
-            else:
-                print(f"Error: File not found: {dxf_file}")
+    parser = argparse.ArgumentParser(
+        description='Convert DXF files containing retaining wall points to KML format.',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Convert a single file
+  %(prog)s input.dxf
+
+  # Convert with custom output name
+  %(prog)s input.dxf -o output.kml
+
+  # Convert with station information
+  %(prog)s input.dxf --start-station 30000 --end-station 30872 --include-stations
+
+  # Convert with elevated polylines
+  %(prog)s input.dxf --polyline-elevation
+
+  # Convert all DXF files in DATA directory
+  %(prog)s DATA/*.dxf
+
+  # Full example with all options
+  %(prog)s input.dxf -o output.kml --start-station 30000 --end-station 30872 \\
+           --include-stations --polyline-elevation
+
+Station Format:
+  Stations should be specified in feet (e.g., 30000 for station 300+00.00)
+  The script calculates stations based on actual measured distances.
+        """
+    )
+
+    parser.add_argument(
+        'input_files',
+        nargs='*',
+        help='DXF file(s) to convert. If no files specified, processes all .dxf files in DATA directory.'
+    )
+
+    parser.add_argument(
+        '-o', '--output',
+        help='Output KML file path (only valid when converting a single file)'
+    )
+
+    parser.add_argument(
+        '--start-station',
+        type=float,
+        help='Starting station in feet (e.g., 30000 for station 300+00.00)'
+    )
+
+    parser.add_argument(
+        '--end-station',
+        type=float,
+        help='Ending station in feet (e.g., 30872 for station 308+72.00). Used for validation.'
+    )
+
+    parser.add_argument(
+        '--include-stations',
+        action='store_true',
+        help='Include station values in point names (requires --start-station)'
+    )
+
+    parser.add_argument(
+        '--polyline-elevation',
+        action='store_true',
+        help='Render polylines at elevation (absolute altitude mode) instead of clamping to ground'
+    )
+
+    args = parser.parse_args()
+
+    # Validate arguments
+    if args.include_stations and args.start_station is None:
+        parser.error("--include-stations requires --start-station to be specified")
+
+    if args.output and len(args.input_files) > 1:
+        parser.error("--output can only be used when converting a single file")
+
+    # Determine which files to process
+    if args.input_files:
+        dxf_files = args.input_files
     else:
         # Process all DXF files in DATA directory
         import glob
-        dxf_files = glob.glob("/home/user/03-3H51U4/DATA/*.dxf")
+        dxf_files = glob.glob("DATA/*.dxf")
+        if not dxf_files:
+            # Try alternate path
+            dxf_files = glob.glob("/home/user/03-3H51U4/DATA/*.dxf")
 
         if not dxf_files:
             print("No DXF files found in DATA directory")
+            print("\nUsage: python convert_dxf_to_kml.py <input.dxf> [options]")
+            print("Run with --help for more information")
             sys.exit(1)
 
         print(f"Found {len(dxf_files)} DXF files to convert\n")
 
-        for dxf_file in sorted(dxf_files):
+    # Process each file
+    for i, dxf_file in enumerate(sorted(dxf_files)):
+        if len(dxf_files) > 1:
             print(f"\n{'='*80}")
-            convert_dxf_to_kml(dxf_file)
+            print(f"[{i+1}/{len(dxf_files)}] Processing: {dxf_file}")
 
+        if not os.path.exists(dxf_file):
+            print(f"Error: File not found: {dxf_file}")
+            continue
+
+        try:
+            # Determine output file
+            output_file = args.output if args.output else None
+
+            # Convert the file
+            result = convert_dxf_to_kml(
+                dxf_file=dxf_file,
+                output_file=output_file,
+                start_station=args.start_station,
+                end_station=args.end_station,
+                include_stations=args.include_stations,
+                polyline_elevation=args.polyline_elevation
+            )
+
+            if len(dxf_files) == 1:
+                print(f"\nSuccess! Output file: {result}")
+
+        except Exception as e:
+            print(f"Error processing {dxf_file}: {e}")
+            import traceback
+            traceback.print_exc()
+
+    if len(dxf_files) > 1:
         print(f"\n{'='*80}")
         print("All conversions complete!")

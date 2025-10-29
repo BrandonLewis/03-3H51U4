@@ -53,22 +53,33 @@ def read_control_points(csv_file):
     return control_points
 
 
-def transform_point(easting, northing, source_epsg='EPSG:2871', target_epsg='EPSG:4326'):
+def transform_point(easting, northing, elevation, source_epsg='EPSG:2871', target_epsg='EPSG:4326'):
     """
     Transform a single point from source CRS to target CRS.
+    Transforms horizontal coordinates and converts elevation units.
+
+    Note: EPSG:2871 is a 2D horizontal CRS. Elevation values are treated as
+    orthometric heights (NAVD88 or similar) and only require unit conversion.
 
     Args:
-        easting: Easting coordinate in source CRS
-        northing: Northing coordinate in source CRS
+        easting: Easting coordinate in source CRS (US Survey Feet)
+        northing: Northing coordinate in source CRS (US Survey Feet)
+        elevation: Elevation in US Survey Feet (orthometric height)
         source_epsg: Source coordinate system (default: EPSG:2871 - CA State Plane Zone II)
         target_epsg: Target coordinate system (default: EPSG:4326 - WGS84)
 
     Returns:
-        Tuple of (longitude, latitude)
+        Tuple of (longitude, latitude, elevation_meters)
+            - longitude: WGS84 longitude in decimal degrees
+            - latitude: WGS84 latitude in decimal degrees
+            - elevation_meters: Elevation in meters (unit conversion only, same vertical datum)
     """
     transformer = Transformer.from_crs(source_epsg, target_epsg, always_xy=True)
     lon, lat = transformer.transform(easting, northing)
-    return lon, lat
+    # Convert elevation from US Survey Feet to meters (unit conversion only)
+    # 1 US Survey Foot = 0.3048006096 meters
+    elev_meters = elevation * 0.3048006096
+    return lon, lat, elev_meters
 
 
 def create_kml(control_points, output_file):
@@ -103,16 +114,19 @@ def create_kml(control_points, output_file):
 
     # Transform and add each control point
     for point in control_points:
-        lon, lat = transform_point(point['easting'], point['northing'])
-        elevation = point['elevation']
+        lon, lat, elev_meters = transform_point(point['easting'], point['northing'], point['elevation'])
+        elevation_orig = point['elevation']
+        elev_ft = elev_meters * 3.28084  # Convert meters to feet for display
         name = point['name']
 
         # Create description with coordinate info
         description = f"""
 Station: {name}
-Easting: {point['easting']:.3f}
-Northing: {point['northing']:.3f}
-Elevation: {elevation:.3f} ft
+Easting: {point['easting']:.3f} ft
+Northing: {point['northing']:.3f} ft
+Elevation (EPSG:2871): {elevation_orig:.3f} ft
+Elevation: {elev_meters:.2f} m ({elev_ft:.2f} ft)
+Note: Elevation is orthometric height (likely NAVD88)
 """
 
         kml_content += f'''

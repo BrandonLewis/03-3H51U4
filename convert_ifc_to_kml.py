@@ -28,17 +28,25 @@ def setup_ifc_settings():
 def transform_point(x, y, z, source_epsg='EPSG:2767', target_epsg='EPSG:4326'):
     """
     Transform a single point from source CRS to target CRS.
+    Transforms horizontal coordinates only; elevation is already in meters.
+
+    Note: EPSG:2767 is a 2D horizontal CRS. Elevation values are treated as
+    orthometric heights (NAVD88 or similar) and don't require datum transformation.
 
     Args:
-        x, y, z: Coordinates in source CRS (Easting, Northing, Elevation)
+        x, y, z: Coordinates in source CRS (Easting, Northing, Elevation in meters)
         source_epsg: Source coordinate system (default: EPSG:2767 - CA State Plane Zone II in meters)
         target_epsg: Target coordinate system (default: EPSG:4326 - WGS84)
 
     Returns:
-        Tuple of (longitude, latitude, elevation)
+        Tuple of (longitude, latitude, elevation_meters)
+            - longitude: WGS84 longitude in decimal degrees
+            - latitude: WGS84 latitude in decimal degrees
+            - elevation_meters: Elevation in meters (same vertical datum, no transformation)
     """
     transformer = Transformer.from_crs(source_epsg, target_epsg, always_xy=True)
     lon, lat = transformer.transform(x, y)
+    # Elevation is already in meters and represents orthometric height
     return lon, lat, z
 
 

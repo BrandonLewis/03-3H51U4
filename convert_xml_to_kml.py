@@ -175,7 +175,10 @@ def parse_landxml_alignment(xml_file):
 
 def transform_coordinates(points, source_epsg='EPSG:2871', target_epsg='EPSG:4326'):
     """
-    Transform coordinates from source CRS to target CRS.
+    Transform 2D coordinates from source CRS to target CRS.
+
+    Note: This function handles horizontal alignments only (no elevation).
+    LandXML alignment files typically contain only 2D horizontal geometry.
 
     Args:
         points: List of (easting, northing) tuples in source CRS (X, Y order)
@@ -183,7 +186,7 @@ def transform_coordinates(points, source_epsg='EPSG:2871', target_epsg='EPSG:432
         target_epsg: Target coordinate system (default: EPSG:4326 - WGS84)
 
     Returns:
-        List of (lon, lat) tuples in target CRS
+        List of (lon, lat) tuples in target CRS (2D only)
     """
     transformer = Transformer.from_crs(source_epsg, target_epsg, always_xy=True)
 
