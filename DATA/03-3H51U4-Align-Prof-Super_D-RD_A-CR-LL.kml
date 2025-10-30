@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+    <name>03-3H51U4-Align-Prof-Super_D-RD_A-CR-LL.kml</name>
+    <description>Converted from 03-3H51U4-Align-Prof-Super_D-RD_A-CR-LL.dxf - EPSG:2871 (NAD83(HARN) CA Zone 2, US Survey Feet) to WGS84</description>
+
+    <Style id="pointStyle">
+        <IconStyle>
+            <color>ff0000ff</color>
+            <scale>0.6</scale>
+            <Icon>
+                <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+            </Icon>
+        </IconStyle>
+        <LabelStyle>
+            <scale>0.7</scale>
+        </LabelStyle>
+    </Style>
+
+    <Style id="lineStyle">
+        <LineStyle>
+            <color>ff0000ff</color>
+            <width>2</width>
+        </LineStyle>
+    </Style>
+</Document>
+</kml>
