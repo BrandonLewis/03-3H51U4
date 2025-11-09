@@ -21,9 +21,11 @@
     <Placemark>
       <name>DELPHINE</name>
       <description>Station: DELPHINE
-Easting: 6822225.150
-Northing: 2227366.900
-Elevation: 2088.910 ft</description>
+Easting: 6822225.150 ft
+Northing: 2227366.900 ft
+Elevation (EPSG:2871): 2088.910 ft
+Elevation: 636.70 m (2088.91 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -34,9 +36,11 @@ Elevation: 2088.910 ft</description>
     <Placemark>
       <name>DEW DROP</name>
       <description>Station: DEW DROP
-Easting: 6822976.190
-Northing: 2171649.060
-Elevation: 1774.540 ft</description>
+Easting: 6822976.190 ft
+Northing: 2171649.060 ft
+Elevation (EPSG:2871): 1774.540 ft
+Elevation: 540.88 m (1774.54 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -47,9 +51,11 @@ Elevation: 1774.540 ft</description>
     <Placemark>
       <name>DOG BAR</name>
       <description>Station: DOG BAR
-Easting: 6832110.610
-Northing: 2190701.310
-Elevation: 2468.700 ft</description>
+Easting: 6832110.610 ft
+Northing: 2190701.310 ft
+Elevation (EPSG:2871): 2468.700 ft
+Elevation: 752.46 m (2468.71 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -60,9 +66,11 @@ Elevation: 2468.700 ft</description>
     <Placemark>
       <name>HOGE</name>
       <description>Station: HOGE
-Easting: 6844936.690
-Northing: 2229242.620
-Elevation: 2914.310 ft</description>
+Easting: 6844936.690 ft
+Northing: 2229242.620 ft
+Elevation (EPSG:2871): 2914.310 ft
+Elevation: 888.28 m (2914.32 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -73,9 +81,11 @@ Elevation: 2914.310 ft</description>
     <Placemark>
       <name>PONDEROSA</name>
       <description>Station: PONDEROSA
-Easting: 6814580.250
-Northing: 2202240.290
-Elevation: 2329.450 ft</description>
+Easting: 6814580.250 ft
+Northing: 2202240.290 ft
+Elevation (EPSG:2871): 2329.450 ft
+Elevation: 710.02 m (2329.45 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -86,9 +96,11 @@ Elevation: 2329.450 ft</description>
     <Placemark>
       <name>SHADY GLEN</name>
       <description>Station: SHADY GLEN
-Easting: 6859733.380
-Northing: 2170687.170
-Elevation: 2453.160 ft</description>
+Easting: 6859733.380 ft
+Northing: 2170687.170 ft
+Elevation (EPSG:2871): 2453.160 ft
+Elevation: 747.72 m (2453.16 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -99,9 +111,11 @@ Elevation: 2453.160 ft</description>
     <Placemark>
       <name>NEV-49-10.39</name>
       <description>Station: NEV-49-10.39
-Easting: 6827404.000
-Northing: 2184218.830
-Elevation: 2265.790 ft</description>
+Easting: 6827404.000 ft
+Northing: 2184218.830 ft
+Elevation (EPSG:2871): 2265.790 ft
+Elevation: 690.61 m (2265.79 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -112,9 +126,11 @@ Elevation: 2265.790 ft</description>
     <Placemark>
       <name>NEV-49-10.60</name>
       <description>Station: NEV-49-10.60
-Easting: 6828261.380
-Northing: 2185331.160
-Elevation: 2284.200 ft</description>
+Easting: 6828261.380 ft
+Northing: 2185331.160 ft
+Elevation (EPSG:2871): 2284.200 ft
+Elevation: 696.23 m (2284.20 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -125,9 +141,11 @@ Elevation: 2284.200 ft</description>
     <Placemark>
       <name>NEV-49-12.86</name>
       <description>Station: NEV-49-12.86
-Easting: 6830225.920
-Northing: 2196712.010
-Elevation: 2358.910 ft</description>
+Easting: 6830225.920 ft
+Northing: 2196712.010 ft
+Elevation (EPSG:2871): 2358.910 ft
+Elevation: 719.00 m (2358.91 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -138,9 +156,11 @@ Elevation: 2358.910 ft</description>
     <Placemark>
       <name>NEV-49-13.66</name>
       <description>Station: NEV-49-13.66
-Easting: 6828203.180
-Northing: 2200344.820
-Elevation: 2448.920 ft</description>
+Easting: 6828203.180 ft
+Northing: 2200344.820 ft
+Elevation (EPSG:2871): 2448.920 ft
+Elevation: 746.43 m (2448.92 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -151,9 +171,11 @@ Elevation: 2448.920 ft</description>
     <Placemark>
       <name>NEV-49-13.96</name>
       <description>Station: NEV-49-13.96
-Easting: 6827140.450
-Northing: 2201389.950
-Elevation: 2409.850 ft</description>
+Easting: 6827140.450 ft
+Northing: 2201389.950 ft
+Elevation (EPSG:2871): 2409.850 ft
+Elevation: 734.52 m (2409.85 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -164,9 +186,11 @@ Elevation: 2409.850 ft</description>
     <Placemark>
       <name>CM 10.90</name>
       <description>Station: CM 10.90
-Easting: 6828863.070
-Northing: 2186505.990
-Elevation: 2260.810 ft</description>
+Easting: 6828863.070 ft
+Northing: 2186505.990 ft
+Elevation (EPSG:2871): 2260.810 ft
+Elevation: 689.10 m (2260.81 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -177,9 +201,11 @@ Elevation: 2260.810 ft</description>
     <Placemark>
       <name>CM 10.99</name>
       <description>Station: CM 10.99
-Easting: 6829001.340
-Northing: 2187051.010
-Elevation: 2235.970 ft</description>
+Easting: 6829001.340 ft
+Northing: 2187051.010 ft
+Elevation (EPSG:2871): 2235.970 ft
+Elevation: 681.53 m (2235.97 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -190,9 +216,11 @@ Elevation: 2235.970 ft</description>
     <Placemark>
       <name>CM 11.10</name>
       <description>Station: CM 11.10
-Easting: 6829096.060
-Northing: 2187502.900
-Elevation: 2248.200 ft</description>
+Easting: 6829096.060 ft
+Northing: 2187502.900 ft
+Elevation (EPSG:2871): 2248.200 ft
+Elevation: 685.25 m (2248.20 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -203,9 +231,11 @@ Elevation: 2248.200 ft</description>
     <Placemark>
       <name>CM 11.21</name>
       <description>Station: CM 11.21
-Easting: 6829085.190
-Northing: 2188082.920
-Elevation: 2274.520 ft</description>
+Easting: 6829085.190 ft
+Northing: 2188082.920 ft
+Elevation (EPSG:2871): 2274.520 ft
+Elevation: 693.28 m (2274.52 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -216,9 +246,11 @@ Elevation: 2274.520 ft</description>
     <Placemark>
       <name>CM 11.30</name>
       <description>Station: CM 11.30
-Easting: 6829216.150
-Northing: 2188542.030
-Elevation: 2290.210 ft</description>
+Easting: 6829216.150 ft
+Northing: 2188542.030 ft
+Elevation (EPSG:2871): 2290.210 ft
+Elevation: 698.06 m (2290.21 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -229,9 +261,11 @@ Elevation: 2290.210 ft</description>
     <Placemark>
       <name>CM 11.43</name>
       <description>Station: CM 11.43
-Easting: 6829434.070
-Northing: 2188949.420
-Elevation: 2284.920 ft</description>
+Easting: 6829434.070 ft
+Northing: 2188949.420 ft
+Elevation (EPSG:2871): 2284.920 ft
+Elevation: 696.45 m (2284.92 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -242,9 +276,11 @@ Elevation: 2284.920 ft</description>
     <Placemark>
       <name>CM 11.62</name>
       <description>Station: CM 11.62
-Easting: 6829831.530
-Northing: 2190199.150
-Elevation: 2326.090 ft</description>
+Easting: 6829831.530 ft
+Northing: 2190199.150 ft
+Elevation (EPSG:2871): 2326.090 ft
+Elevation: 708.99 m (2326.09 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -255,9 +291,11 @@ Elevation: 2326.090 ft</description>
     <Placemark>
       <name>CM 11.76</name>
       <description>Station: CM 11.76
-Easting: 6829797.350
-Northing: 2190690.010
-Elevation: 2352.730 ft</description>
+Easting: 6829797.350 ft
+Northing: 2190690.010 ft
+Elevation (EPSG:2871): 2352.730 ft
+Elevation: 717.11 m (2352.73 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -268,9 +306,11 @@ Elevation: 2352.730 ft</description>
     <Placemark>
       <name>CM 11.90</name>
       <description>Station: CM 11.90
-Easting: 6829930.530
-Northing: 2191599.580
-Elevation: 2395.610 ft</description>
+Easting: 6829930.530 ft
+Northing: 2191599.580 ft
+Elevation (EPSG:2871): 2395.610 ft
+Elevation: 730.18 m (2395.61 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -281,9 +321,11 @@ Elevation: 2395.610 ft</description>
     <Placemark>
       <name>CM 11.98</name>
       <description>Station: CM 11.98
-Easting: 6829979.100
-Northing: 2192174.550
-Elevation: 2414.840 ft</description>
+Easting: 6829979.100 ft
+Northing: 2192174.550 ft
+Elevation (EPSG:2871): 2414.840 ft
+Elevation: 736.04 m (2414.84 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -294,9 +336,11 @@ Elevation: 2414.840 ft</description>
     <Placemark>
       <name>CM 12.04</name>
       <description>Station: CM 12.04
-Easting: 6829965.470
-Northing: 2192471.170
-Elevation: 2423.870 ft</description>
+Easting: 6829965.470 ft
+Northing: 2192471.170 ft
+Elevation (EPSG:2871): 2423.870 ft
+Elevation: 738.80 m (2423.87 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -307,9 +351,11 @@ Elevation: 2423.870 ft</description>
     <Placemark>
       <name>CM 12.19</name>
       <description>Station: CM 12.19
-Easting: 6830069.130
-Northing: 2193275.100
-Elevation: 2434.950 ft</description>
+Easting: 6830069.130 ft
+Northing: 2193275.100 ft
+Elevation (EPSG:2871): 2434.950 ft
+Elevation: 742.17 m (2434.95 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -320,9 +366,11 @@ Elevation: 2434.950 ft</description>
     <Placemark>
       <name>CM 12.38</name>
       <description>Station: CM 12.38
-Easting: 6830174.590
-Northing: 2193682.800
-Elevation: 2438.350 ft</description>
+Easting: 6830174.590 ft
+Northing: 2193682.800 ft
+Elevation (EPSG:2871): 2438.350 ft
+Elevation: 743.21 m (2438.35 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -333,9 +381,11 @@ Elevation: 2438.350 ft</description>
     <Placemark>
       <name>CM 12.49</name>
       <description>Station: CM 12.49
-Easting: 6830195.240
-Northing: 2194257.460
-Elevation: 2441.800 ft</description>
+Easting: 6830195.240 ft
+Northing: 2194257.460 ft
+Elevation (EPSG:2871): 2441.800 ft
+Elevation: 744.26 m (2441.80 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -346,9 +396,11 @@ Elevation: 2441.800 ft</description>
     <Placemark>
       <name>CM 12.54</name>
       <description>Station: CM 12.54
-Easting: 6830289.700
-Northing: 2194589.250
-Elevation: 2434.370 ft</description>
+Easting: 6830289.700 ft
+Northing: 2194589.250 ft
+Elevation (EPSG:2871): 2434.370 ft
+Elevation: 742.00 m (2434.37 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -359,9 +411,11 @@ Elevation: 2434.370 ft</description>
     <Placemark>
       <name>CM 12.59</name>
       <description>Station: CM 12.59
-Easting: 6830331.220
-Northing: 2195320.980
-Elevation: 2390.920 ft</description>
+Easting: 6830331.220 ft
+Northing: 2195320.980 ft
+Elevation (EPSG:2871): 2390.920 ft
+Elevation: 728.75 m (2390.92 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -372,9 +426,11 @@ Elevation: 2390.920 ft</description>
     <Placemark>
       <name>CM 12.68</name>
       <description>Station: CM 12.68
-Easting: 6830430.920
-Northing: 2195815.110
-Elevation: 2369.010 ft</description>
+Easting: 6830430.920 ft
+Northing: 2195815.110 ft
+Elevation (EPSG:2871): 2369.010 ft
+Elevation: 722.08 m (2369.01 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -385,9 +441,11 @@ Elevation: 2369.010 ft</description>
     <Placemark>
       <name>CM 12.70</name>
       <description>Station: CM 12.70
-Easting: 6830376.030
-Northing: 2196495.190
-Elevation: 2361.450 ft</description>
+Easting: 6830376.030 ft
+Northing: 2196495.190 ft
+Elevation (EPSG:2871): 2361.450 ft
+Elevation: 719.77 m (2361.45 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -398,9 +456,11 @@ Elevation: 2361.450 ft</description>
     <Placemark>
       <name>CM 12.73</name>
       <description>Station: CM 12.73
-Easting: 6830431.760
-Northing: 2196085.460
-Elevation: 2366.980 ft</description>
+Easting: 6830431.760 ft
+Northing: 2196085.460 ft
+Elevation (EPSG:2871): 2366.980 ft
+Elevation: 721.46 m (2366.98 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -411,9 +471,11 @@ Elevation: 2366.980 ft</description>
     <Placemark>
       <name>CM 12.92</name>
       <description>Station: CM 12.92
-Easting: 6830208.730
-Northing: 2197073.130
-Elevation: 2371.200 ft</description>
+Easting: 6830208.730 ft
+Northing: 2197073.130 ft
+Elevation (EPSG:2871): 2371.200 ft
+Elevation: 722.74 m (2371.20 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -424,9 +486,11 @@ Elevation: 2371.200 ft</description>
     <Placemark>
       <name>CM 13.03</name>
       <description>Station: CM 13.03
-Easting: 6829965.800
-Northing: 2197612.320
-Elevation: 2386.010 ft</description>
+Easting: 6829965.800 ft
+Northing: 2197612.320 ft
+Elevation (EPSG:2871): 2386.010 ft
+Elevation: 727.26 m (2386.01 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -437,9 +501,11 @@ Elevation: 2386.010 ft</description>
     <Placemark>
       <name>CM 13.16</name>
       <description>Station: CM 13.16
-Easting: 6829539.670
-Northing: 2198237.320
-Elevation: 2393.520 ft</description>
+Easting: 6829539.670 ft
+Northing: 2198237.320 ft
+Elevation (EPSG:2871): 2393.520 ft
+Elevation: 729.55 m (2393.52 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -450,9 +516,11 @@ Elevation: 2393.520 ft</description>
     <Placemark>
       <name>CM 13.34</name>
       <description>Station: CM 13.34
-Easting: 6829306.690
-Northing: 2198929.300
-Elevation: 2399.890 ft</description>
+Easting: 6829306.690 ft
+Northing: 2198929.300 ft
+Elevation (EPSG:2871): 2399.890 ft
+Elevation: 731.49 m (2399.89 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
@@ -463,13 +531,210 @@ Elevation: 2399.890 ft</description>
     <Placemark>
       <name>CM 13.53</name>
       <description>Station: CM 13.53
-Easting: 6828695.790
-Northing: 2199903.210
-Elevation: 2418.400 ft</description>
+Easting: 6828695.790 ft
+Northing: 2199903.210 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
       <styleUrl>#controlPointStyle</styleUrl>
       <Point>
         <altitudeMode>clampToGround</altitudeMode>
         <coordinates>-121.05771203110265,39.199115601599125,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>RC-24-013</name>
+      <description>Station: RC-24-013
+Easting: 6828918.650 ft
+Northing: 2187021.330 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0573971347935,39.16374120712343,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>RC-24-012</name>
+      <description>Station: RC-24-012
+Easting: 6828977.050 ft
+Northing: 2187268.880 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05718211076685,39.16441921091884,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-24-014</name>
+      <description>Station: A-24-014
+Easting: 6829031.620 ft
+Northing: 2187556.820 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05697911234364,39.1652082171055,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-24-015</name>
+      <description>Station: A-24-015
+Easting: 6829032.040 ft
+Northing: 2187843.830 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05696712658981,39.165996212413944,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-24-016</name>
+      <description>Station: A-24-016
+Easting: 6829096.200 ft
+Northing: 2188081.600 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05673213432902,39.166647199255394,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-24-018</name>
+      <description>Station: A-24-018
+Easting: 6829140.650 ft
+Northing: 2188279.110 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05656812894067,39.1671882105907,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-24-019</name>
+      <description>Station: A-24-019
+Easting: 6829217.400 ft
+Northing: 218855.720 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.12330896385056,33.76497662529006,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>RC-24-011</name>
+      <description>Station: RC-24-011
+Easting: 6829468.150 ft
+Northing: 2189037.500 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05538523660245,39.16926108453553,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-25-003</name>
+      <description>Station: A-25-003
+Easting: 6829531.700 ft
+Northing: 2189227.400 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.0551541259932,39.169780654683,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-24-017</name>
+      <description>Station: A-24-017
+Easting: 6829656.620 ft
+Northing: 2189401.540 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05470712953259,39.17025520159616,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-25-001</name>
+      <description>Station: A-25-001
+Easting: 6829615.000 ft
+Northing: 2819466.700 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.03116108104602,40.89958188989684,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-25-002</name>
+      <description>Station: A-25-002
+Easting: 6829637.900 ft
+Northing: 2189517.600 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05476889962671,39.170574387187834,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>A-25-006</name>
+      <description>Station: A-25-006
+Easting: 6829696.410 ft
+Northing: 2189665.290 ft
+Elevation (EPSG:2871): 2418.400 ft
+Elevation: 737.13 m (2418.40 ft)
+Note: Elevation is orthometric height (likely NAVD88)</description>
+      <styleUrl>#controlPointStyle</styleUrl>
+      <Point>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-121.05455710614096,39.17097820941243,0</coordinates>
       </Point>
     </Placemark>
   </Document>
